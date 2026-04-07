@@ -19,8 +19,9 @@ export default function Hero() {
           <Image
             src={"/icons/subject2.png"}
             alt="subject"
-            width={1080}
+            width={1920}
             height={1920}
+            loading="eager"
             className="w-[1920] h-[1920] object-contain absolute top-[-600px] z-10"
           />
         </div>

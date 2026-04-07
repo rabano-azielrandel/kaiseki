@@ -11,8 +11,8 @@ export default function Navbar() {
   return (
     <div className="flex h-16 bg-background">
       {/* Logo */}
-      <div className="hidden lg:block w-[45%] px-4 py-2">
-        <div className="w-[80%] flex px-2 bg-[#B74F46]">
+      <div className="hidden lg:block w-[45%] px-4">
+        <div className="w-[80%] h-16 flex px-2 bg-[#B74F46]">
           <p className="text-5xl font-japanese font-semibold leading-tight tracking-widest">
             KAISEKI
           </p>
@@ -20,7 +20,7 @@ export default function Navbar() {
       </div>
 
       {/* Navs */}
-      <div className="w-full lg:w-[55%] relative flex justify-end px-4 lg:block bg-green-500">
+      <div className="w-full lg:w-[55%] relative flex justify-end px-4 lg:block">
         {/* Desktop */}
         <ul className="h-full hidden lg:flex justify-between items-center gap-4 px-4">
           {!hook.isSearchOpen &&
@@ -33,7 +33,7 @@ export default function Navbar() {
                 }
               >
                 <a href={`#${element}`}>
-                  <p className="font-jakarta-sans">{element}</p>
+                  <p className="font-jakarta-sans text-primary">{element}</p>
                 </a>
               </li>
             ))}
@@ -46,7 +46,7 @@ export default function Navbar() {
               alt="search"
               width={100}
               height={100}
-              className="w-6 h-6 object-center transition-transform duration-200 hover:scale-125"
+              className="w-6 h-6 object-center transition-transform duration-200 hover:scale-125 bg-primary"
             />
           </li>
         </ul>
