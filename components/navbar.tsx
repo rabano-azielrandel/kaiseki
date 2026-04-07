@@ -9,10 +9,10 @@ const tabs = ["MENU", "FOOD", "SERVICES", "ABOUT"];
 export default function Navbar() {
   const hook = useNavbar();
   return (
-    <div className="flex h-16 bg-[#f6f6f6]">
+    <div className="flex h-16 bg-background">
       {/* Logo */}
-      <div className="hidden lg:block w-[45%] px-4 py-2 bg-red-400">
-        <div>
+      <div className="hidden lg:block w-[45%] px-4 py-2">
+        <div className="w-[80%] flex px-2 bg-[#B74F46]">
           <p className="text-5xl font-japanese font-semibold leading-tight tracking-widest">
             KAISEKI
           </p>
