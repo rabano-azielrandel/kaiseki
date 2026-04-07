@@ -31,6 +31,8 @@ export default function Hero() {
           <div>
             <ThemeSwitcher />
           </div>
+          <h1 className="font-playfair">Feel the taste of fine Dining</h1>
+          <h3 className="font-playfair">A Seasonal Elegance in Every Course</h3>
         </div>
       </div>
 

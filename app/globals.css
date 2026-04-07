@@ -30,6 +30,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-jakarta-sans: var(--font-jakarta);
+  --font-playfair: "Playfair Display", serif;
 
   /* Breakpoints */
   --breakpoint-xss: 320px;
