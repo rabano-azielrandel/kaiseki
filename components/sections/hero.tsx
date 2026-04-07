@@ -15,7 +15,7 @@ export default function Hero() {
       <div className="flex flex-col lg:flex-row">
         {/* subject image */}
         <div className="relative w-[45%] h-[calc(100vh-10rem)] px-4 overflow-hidden">
-          <div className="w-[80%] h-full flex bg-[#B74F46]"></div>
+          <div className="w-[80%] h-full flex bg-[#B74F46]" />
           <Image
             src={"/icons/subject2.png"}
             alt="subject"

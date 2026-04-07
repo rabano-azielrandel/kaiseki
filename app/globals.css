@@ -1,24 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background: 254 237 221;
-  --foreground: 23 23 23;
-  --primary: 10 10 10;
+  /* Use HSL format: H S% L% */
+  --background: 29 94% 93%; /* #FEEDDD */
+  --foreground: 0 0% 9%; /* #171717-ish */
+  --primary: 0 0% 0%; /* black */
+  --accent: 5 45% 50%; /* #B74F46 */
+  --white: 0 0% 100%; /* #FEFEFE */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: 10 10 10;
-    --foreground: 237 237 237;
-    --primary: 246 246 246;
-  }
+.dark {
+  --background: 10 18% 8%; /* #17100F */
+  --foreground: 0 0% 93%; /* light text */
+  --primary: 0 0% 100%; /* white */
+  --accent: 5 45% 50%; /* same accent (optional) */
+  --white: 0 0% 100%;
 }
 
 @theme inline {
   /* Colors */
-  --color-background: rgb(var(--background));
-  --color-foreground: rgb(var(--foreground));
-  --color-primary: rgb(var(--primary));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-accent: hsl(var(--accent));
+  --color-white: hsl(var(--white));
 
   /* Fonts */
   --font-japanese: "Japanese3017", sans-serif;

@@ -9,7 +9,7 @@ const tabs = ["MENU", "FOOD", "SERVICES", "ABOUT"];
 export default function Navbar() {
   const hook = useNavbar();
   return (
-    <div className="flex h-16 bg-background">
+    <div className="flex h-16 bg-[hsl(var(--background))] ">
       {/* Logo */}
       <div className="hidden lg:block w-[45%] px-4">
         <div className="w-[80%] h-16 flex px-2 bg-[#B74F46]">
@@ -42,11 +42,11 @@ export default function Navbar() {
 
           <li onClick={hook.toggleSearch} className="cursor-pointer">
             <Image
-              src={"/icons/search.svg"}
+              src={"/icons/search1.png"}
               alt="search"
               width={100}
               height={100}
-              className="w-6 h-6 object-center transition-transform duration-200 hover:scale-125 bg-primary"
+              className="w-6 h-6 object-center text-primary transition-transform duration-200 hover:scale-125"
             />
           </li>
         </ul>
