@@ -16,13 +16,15 @@ export default function Hero() {
         {/* subject image */}
         <div className="relative w-[45%] h-[calc(100vh-10rem)] px-4 overflow-hidden">
           <div className="w-[80%] h-full flex bg-[#B74F46]" />
+
           <Image
-            src={"/icons/subject2.png"}
+            src="/icons/subject2.png"
             alt="subject"
-            width={1920}
-            height={1920}
-            loading="eager"
-            className="w-[1920] h-[1920] object-contain absolute top-[-600px] z-10"
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 45vw"
+            style={{ left: "16px" }}
+            className="object-contain absolute top-[-600px] z-10"
           />
         </div>
         <div className="w-[55%] h-[calc(100vh-10rem)]">

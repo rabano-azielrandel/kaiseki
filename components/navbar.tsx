@@ -9,7 +9,7 @@ const tabs = ["MENU", "FOOD", "SERVICES", "ABOUT"];
 export default function Navbar() {
   const hook = useNavbar();
   return (
-    <div className="flex h-16 bg-[hsl(var(--background))] ">
+    <div className="flex h-16">
       {/* Logo */}
       <div className="hidden lg:block w-[45%] px-4">
         <div className="w-[80%] h-16 flex px-2 bg-[#B74F46]">
