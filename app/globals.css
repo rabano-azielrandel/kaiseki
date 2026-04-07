@@ -13,12 +13,40 @@
 }
 
 @theme inline {
+  /* Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
+  /* Fonts */
   --font-japanese: "Japanese3017", sans-serif;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-jakarta-sans: var(--font-jakarta);
+
+  /* Breakpoints */
+  --breakpoint-xss: 320px;
+  --breakpoint-xs: 360px;
+  --breakpoint-ss: 390px;
+  --breakpoint-smx: 420px;
+  --breakpoint-2xs: 480px;
+  /* Tablets */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-2md: 900px;
+  /* Desktop */
+  --breakpoint-lg: 1024px;
+  --breakpoint-2lg: 1152px;
+  --breakpoint-xl: 1280px;
+  /* Wide screens */
+  --breakpoint-2xl: 1440px;
+  --breakpoint-3xl: 1600px;
+  --breakpoint-4xl: 1920px;
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
 }
 
 @font-face {
