@@ -5,6 +5,7 @@
   --background: 29 94% 93%; /* #FEEDDD */
   --foreground: 0 0% 9%; /* #171717-ish */
   --primary: 0 0% 0%; /* black */
+  --secondary: 0 0% 100%; /* white */
   --accent: 5 45% 50%; /* #B74F46 */
   --white: 0 0% 100%; /* #FEFEFE */
 }
@@ -13,8 +14,11 @@
   --background: 10 18% 8%; /* #17100F */
   --foreground: 0 0% 93%; /* light text */
   --primary: 0 0% 100%; /* white */
+  --secondary: 0 0% 0%; /* black */
   --accent: 5 45% 50%; /* same accent (optional) */
   --white: 0 0% 100%;
+  --text:       
+;
 }
 
 @theme inline {
@@ -22,6 +26,7 @@
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
   --color-primary: hsl(var(--primary));
+  --color-secondary: hsl(var(--secondary));
   --color-accent: hsl(var(--accent));
   --color-white: hsl(var(--white));
 
