@@ -17,7 +17,7 @@
   --secondary: 0 0% 0%; /* black */
   --accent: 5 45% 50%; /* same accent (optional) */
   --white: 0 0% 100%;
-  --text:       
+  --text:        
 ;
 }
 
@@ -39,6 +39,7 @@
 
   /* Breakpoints */
   --breakpoint-xss: 320px;
+  --breakpoint-xs1: 340px;
   --breakpoint-xs: 360px;
   --breakpoint-ss: 390px;
   --breakpoint-smx: 420px;

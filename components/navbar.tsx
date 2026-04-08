@@ -22,7 +22,7 @@ export default function Navbar() {
       </div>
 
       {/* Navs */}
-      <div className="w-full lg:w-[55%] relative flex justify-end px-4 lg:block">
+      <div className="w-full lg:w-[55%] relative flex lg:block justify-end px-4">
         {/* Desktop */}
         <ul className="h-full hidden lg:flex justify-between items-center gap-6 px-4">
           {!hook.isSearchOpen &&
