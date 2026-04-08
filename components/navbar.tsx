@@ -14,7 +14,7 @@ export default function Navbar() {
     <div className="flex h-16">
       {/* Logo */}
       <div className="hidden lg:block w-[45%] px-4">
-        <div className="w-[80%] h-16 flex px-2 bg-[#B74F46]">
+        <div className="w-[80%] h-16 flex px-8 py-2 bg-[#B74F46]">
           <p className="text-5xl font-japanese font-semibold leading-tight tracking-widest">
             KAISEKI
           </p>
