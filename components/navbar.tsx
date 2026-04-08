@@ -4,6 +4,7 @@ import Image from "next/image";
 import useNavbar from "@/hooks/useNavbar";
 import { Input } from "./ui/input";
 import { SearchIcon } from "./ui/search-icon";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 
 const tabs = ["MENU", "FOOD", "SERVICES", "ABOUT"];
 
@@ -23,7 +24,7 @@ export default function Navbar() {
       {/* Navs */}
       <div className="w-full lg:w-[55%] relative flex justify-end px-4 lg:block">
         {/* Desktop */}
-        <ul className="h-full hidden lg:flex justify-between items-center gap-4 px-4">
+        <ul className="h-full hidden lg:flex justify-between items-center gap-6 px-4">
           {!hook.isSearchOpen &&
             tabs.map((element, index) => (
               <li
@@ -41,8 +42,12 @@ export default function Navbar() {
 
           {hook.isSearchOpen && <Input />}
 
-          <li onClick={hook.toggleSearch} className="cursor-pointer">
-            <SearchIcon className="w-6 h-6 dark:text-foreground transition-transform duration-200 hover:scale-125" />
+          <li className="flex-center gap-10 cursor-pointer">
+            <SearchIcon
+              onClick={hook.toggleSearch}
+              className="w-7 h-7 dark:text-foreground transition-transform duration-200 hover:scale-125"
+            />
+            <ThemeSwitcher />
           </li>
         </ul>
 
