@@ -1,5 +1,6 @@
 import Navbar from "@/components/navbar";
 import Hero from "@/components/sections/hero";
+import Menu from "@/components/sections/menu";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <main className="flex flex-1 w-full max-w-[1520px] flex-col">
         <Navbar />
         <Hero />
+        <Menu />
       </main>
     </div>
   );
