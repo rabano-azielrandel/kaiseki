@@ -53,7 +53,7 @@ export default function Hero() {
         </div>
 
         {/* CTA */}
-        <div className="flex gap-8">
+        <div className="flex items-center gap-8">
           <Button
             variant="default"
             className="text-secondary rounded-full cursor-pointer px-4 py-2 text-sm lg:px-8 lg:py-7 lg:text-base"
@@ -63,9 +63,9 @@ export default function Hero() {
 
           <Button
             variant="outline"
-            className="text-primary rounded-full cursor-pointer px-4 py-2 text-sm lg:px-8 lg:py-7 lg:text-base"
+            className="text-primary rounded-full cursor-pointer px-4 py-2 text-sm lg:px-6 lg:py-7 lg:text-base"
           >
-            ▶ <p>How to order</p>
+            <span>▶</span> <p>How to order</p>
           </Button>
         </div>
 
