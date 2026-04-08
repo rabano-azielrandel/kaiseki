@@ -29,7 +29,11 @@ export default function Navbar() {
             tabs.map((element, index) => (
               <li
                 key={index}
-                onClick={() => hook.setActiveSection(element)}
+                onClick={() =>
+                  hook.setActiveSection((prev) =>
+                    prev === element ? null : element,
+                  )
+                }
                 className={
                   hook.activeSection === element ? "font-medium" : "font-light"
                 }
