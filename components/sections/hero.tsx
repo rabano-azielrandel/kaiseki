@@ -44,10 +44,10 @@ export default function Hero() {
       <div className="w-full lg:w-[55%] h-full lg:h-[calc(100vh-10rem)] flex flex-col px-4 lg:px-10 py-16 gap-9 lg:gap-20 relative z-20 -mt-12 sm:mt-0">
         {/* Main Text */}
         <div className="flex flex-col gap-2 lg:gap-6">
-          <h1 className="font-playfair text-3xl lg:text-9xl font-semibold">
+          <h1 className="font-playfair text-4xl lg:text-7xl 2xl:text-9xl font-semibold">
             A Symphony of Taste
           </h1>
-          <h3 className="font-playfair text-md lg:text-3xl font-medium leading-tight tracking-wide">
+          <h3 className="font-playfair text-md lg:text-xl 2xl:text-3xl font-medium leading-tight tracking-wide">
             Seasonal Elegance in Every Course
           </h3>
         </div>
