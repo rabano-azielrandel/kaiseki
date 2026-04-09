@@ -9,76 +9,13 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
-
-type CardType = {
-  id: number;
-  title: string;
-  description: string;
-  thumbnail: string;
-  content: string;
-};
+import { CardType } from "@/types/menuTypes";
+import MenuCardsData from "@/data/menuData";
 
 export default function Menu() {
   const [selectedCard, setSelectedCard] = React.useState<CardType | null>(null);
 
-  const cards: CardType[] = [
-    {
-      id: 1,
-      title: "Sushi",
-      description: "Fresh selection",
-      thumbnail: "/icons/shrimp-sushi.png",
-      content: "Full sushi details...",
-    },
-    {
-      id: 2,
-      title: "Ramen",
-      description: "Rich broth",
-      thumbnail: "/icons/ramen.png",
-      content: "Full ramen details...",
-    },
-    {
-      id: 3,
-      title: "Donburi",
-      description: "Rice bowls",
-      thumbnail: "/icons/tonkatsu.png",
-      content: "Full tempura details...",
-    },
-    {
-      id: 4,
-      title: "Yoshoku",
-      description: "Western fusion",
-      thumbnail: "/icons/tonkatsu.png",
-      content: "Full sashimi details...",
-    },
-    {
-      id: 5,
-      title: "Sashimi",
-      description: "Pure cuts",
-      thumbnail: "/icons/sushi-3.png",
-      content: "Full donburi details...",
-    },
-    {
-      id: 6,
-      title: "Appetizer",
-      description: "Starter bites",
-      thumbnail: "/icons/tempura.png",
-      content: "Full udon details...",
-    },
-    {
-      id: 7,
-      title: "Drinks",
-      description: "Crafted beverages",
-      thumbnail: "/icons/matcha.png",
-      content: "Full matcha details...",
-    },
-    {
-      id: 8,
-      title: "Dessert",
-      description: "Sweet finish",
-      thumbnail: "/icons/tonkatsu.png",
-      content: "Full bento details...",
-    },
-  ];
+  const cards = MenuCardsData;
 
   // Prevent scroll when modal is open
   React.useEffect(() => {
@@ -134,18 +71,61 @@ export default function Menu() {
           >
             <div
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-xl p-6 max-w-md w-full relative"
+              className="bg-[#f6f6f6] rounded-xl w-[90%] max-w-xl h-[54vh] flex flex-col relative"
             >
-              <button
-                onClick={() => setSelectedCard(null)}
-                className="absolute top-3 right-3 text-lg"
-              >
-                ✕
-              </button>
+              {/* HEADER (fixed) */}
+              <div className="p-6 border-b-2 border-accent flex justify-between items-center">
+                <h2 className="text-2xl font-semibold font-japanese leading-tight tracking-widest">
+                  {selectedCard.title}
+                </h2>
 
-              <h2 className="text-2xl font-bold mb-2">{selectedCard.title}</h2>
+                <button
+                  onClick={() => setSelectedCard(null)}
+                  className="text-xl cursor-pointer"
+                >
+                  ✕
+                </button>
+              </div>
 
-              <p className="text-gray-600">{selectedCard.content}</p>
+              {/* SCROLLABLE CONTENT */}
+              <div className="p-6 overflow-y-auto flex-1 space-y-4">
+                {selectedCard.content.map((item) => (
+                  <div
+                    key={item.name}
+                    className="flex gap-4 items-center border-b pb-3 last:border-none"
+                  >
+                    {/* IMAGE */}
+                    <div className="w-16 h-16 flex-shrink-0">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        width={64}
+                        height={64}
+                        className="object-contain w-full h-full"
+                      />
+                    </div>
+
+                    {/* TEXT */}
+                    <div className="flex-1">
+                      <p className="font-semibold">{item.name}</p>
+                      <p className="text-sm text-gray-500">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    {/* PRICE */}
+                    <div className="text-right whitespace-nowrap">
+                      <p className="font-semibold">{item.solo_price}</p>
+
+                      {item.set_price && (
+                        <p className="text-xs text-gray-500">
+                          Set {item.set_price}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}
