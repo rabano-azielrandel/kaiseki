@@ -49,85 +49,89 @@ export default function Food() {
   const visible = getVisibleItems();
 
   return (
-    <section className="w-full py-16 bg-[#b44b3f] text-white flex flex-col items-center">
+    <section className="w-full py-16 bg-[#b44b3f] text-white flex flex-col">
       {/* TITLE */}
-      <h2 className="text-primary text-3xl lg:text-5xl font-japanese leading-tight tracking-widest mb-12">
+      <h2 className="text-primary text-3xl lg:text-5xl text-center font-japanese leading-tight tracking-widest mb-12">
         Food Ratings
       </h2>
 
       {/* CATEGORY PILLS */}
-      <div className="flex gap-4 overflow-x-scroll py-2 mb-32">
-        {["all", ...menuCardsData.map((c) => c.title.toLowerCase())].map(
-          (cat, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveCategory(cat)}
-              className={`w-30 px-5 py-2 rounded-full border text-sm whitespace-nowrap transition
-                ${
-                  activeCategory === cat
-                    ? "bg-background text-black"
-                    : "bg-transparent border-white/40"
-                }
-              `}
-            >
-              <p className="text-primary">{cat}</p>
-            </button>
-          ),
-        )}
+      <div className="px-4 lg:px-12 overflow-hidden">
+        <div className="flex justify-start lg:justify-center gap-4 w-full overflow-x-auto py-2 mb-32 scrollbar-hide">
+          {["all", ...menuCardsData.map((c) => c.title.toLowerCase())].map(
+            (cat, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveCategory(cat)}
+                className={`shrink-0 px-5 py-2 rounded-full border text-sm whitespace-nowrap transition
+            ${
+              activeCategory === cat
+                ? "bg-background text-black"
+                : "bg-transparent border-white/40"
+            }
+          `}
+              >
+                <p className="text-primary">{cat}</p>
+              </button>
+            ),
+          )}
+        </div>
       </div>
 
       {/* 🎴 CAROUSEL */}
-      <div className="flex items-center justify-center gap-6">
-        {visible.map((item, index) => {
-          const isCenter = index === 1;
+      <div className="overflow-hidden">
+        <div className="flex items-center justify-center gap-6 py-8">
+          {visible.map((item, index) => {
+            const isCenter = index === 1;
 
-          return (
-            <div
-              key={index}
-              onClick={() => {
-                if (index === 0)
-                  setActiveIndex(
-                    (prev) => (prev - 1 + items.length) % items.length,
-                  );
-                if (index === 2)
-                  setActiveIndex((prev) => (prev + 1) % items.length);
-              }}
-              className={`cursor-pointer rounded-2xl transition-all duration-300
-                w-60 h-80 flex flex-col items-center justify-center gap-3 p-4
-                ${
-                  isCenter
-                    ? "bg-background text-black scale-110 shadow-xl"
-                    : "bg-background/30 text-white opacity-80 hover:opacity-100"
-                }
-              `}
-            >
-              {/* IMAGE */}
-              <div className="w-24 h-24 flex items-center justify-center">
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  width={100}
-                  height={100}
-                  className="max-w-full max-h-full object-contain"
-                />
+            return (
+              <div
+                key={index}
+                onClick={() => {
+                  if (index === 0)
+                    setActiveIndex(
+                      (prev) => (prev - 1 + items.length) % items.length,
+                    );
+                  if (index === 2)
+                    setActiveIndex((prev) => (prev + 1) % items.length);
+                }}
+                className={`cursor-pointer rounded-2xl transition-all duration-300
+                    w-60 h-80 flex flex-col items-center justify-center gap-3 p-4 overflow-hidden shrink-0
+                    ${
+                      isCenter
+                        ? "bg-background text-black scale-110 shadow-xl"
+                        : "bg-background/30 text-white opacity-80 hover:opacity-100"
+                    }
+                `}
+              >
+                {/* IMAGE */}
+                <div className="w-24 h-24 flex items-center justify-center">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    width={100}
+                    height={100}
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+
+                {/* NAME */}
+                <h3 className="text-primary text-base font-semibold text-center capitalize line-clamp-2">
+                  {item.name}
+                </h3>
+
+                {/* PRICE & RATING */}
+                <div className="flex items-center justify-between w-full px-2 text-primary text-sm">
+                  <p className="flex items-center gap-1">
+                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    {Number(item.rating).toFixed(1)}
+                  </p>
+                  <p>${Number(item.solo_price.replace("$", "")).toFixed(2)}</p>
+                </div>
               </div>
-
-              {/* NAME */}
-              <h3 className="text-primary text-base font-semibold text-center capitalize line-clamp-2">
-                {item.name}
-              </h3>
-
-              {/* PRICE & RATING */}
-              <div className="flex items-center justify-between w-full px-2 text-primary text-sm">
-                <p className="flex items-center gap-1">
-                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  {Number(item.rating).toFixed(1)}
-                </p>
-                <p>${Number(item.solo_price.replace("$", "")).toFixed(2)}</p>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
 
       {/* BUTTON */}
