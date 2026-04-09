@@ -25,7 +25,7 @@ export default function Menu() {
   return (
     <div className="flex flex-col gap-20 px-4 py-28" id="#menu">
       <div className="border-b-2 py-4 border-primary">
-        <p className="font-japanese text-2xl leading-tight tracking-wider">
+        <p className="font-japanese text-center lg:text-left text-2xl leading-tight tracking-wider">
           Kaiseki Signature
         </p>
       </div>
@@ -37,7 +37,7 @@ export default function Menu() {
             <Card
               key={card.id}
               onClick={() => setSelectedCard(card)}
-              className="flex items-center gap-8 px-4 py-4 cursor-pointer hover:shadow-xl transition hover:-translate-y-1"
+              className="flex justify-center lg:justify-start items-center gap-8 px-4 py-4 cursor-pointer hover:shadow-xl transition hover:-translate-y-1"
             >
               {/* IMAGE */}
               <div className="w-20 h-20 flex items-center justify-center flex-shrink-0">
@@ -51,7 +51,7 @@ export default function Menu() {
               </div>
 
               {/* TEXT */}
-              <div className="flex flex-col justify-center">
+              <div className="hidden sm:flex flex-col justify-center">
                 <CardTitle className="text-base leading-tight">
                   {card.title}
                 </CardTitle>
@@ -108,7 +108,7 @@ export default function Menu() {
                     {/* TEXT */}
                     <div className="flex-1">
                       <p className="font-semibold">{item.name}</p>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-[10px] lg:text-sm text-gray-500">
                         {item.description}
                       </p>
                     </div>
