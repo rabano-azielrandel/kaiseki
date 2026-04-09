@@ -4,6 +4,7 @@ export type MenuItem = {
   solo_price: string;
   set_price?: string;
   image: string;
+  rating?: string;
 };
 
 export type CardType = {

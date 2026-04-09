@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar";
 import Hero from "@/components/sections/hero";
 import Menu from "@/components/sections/menu";
+import Food from "@/components/sections/food";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
         <Navbar />
         <Hero />
         <Menu />
+        <Food />
       </main>
     </div>
   );
