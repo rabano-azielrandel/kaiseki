@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
+import { Star } from "lucide-react";
 import Image from "next/image";
 import menuCardsData from "@/data/menuData";
-import { Star } from "lucide-react";
+import RateForm from "../form/rate-form";
 
 export default function Food() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -148,7 +149,7 @@ export default function Food() {
       {activeRateButton && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-[#f6f6f6] rounded-xl w-[90%] max-w-xl h-[54vh] flex flex-col relative">
-            {/* HEADER (fixed) */}
+            {/* HEADER*/}
             <div className="p-6 border-b-2 border-accent flex justify-between items-center">
               <h2 className="text-primary text-2xl font-medium font-japanese leading-tight tracking-widest">
                 Rate our Food
@@ -160,6 +161,11 @@ export default function Food() {
               >
                 ✕
               </button>
+            </div>
+
+            {/* CONTENT */}
+            <div className="overflow-y-scroll">
+              <RateForm data={menuCardsData} />
             </div>
           </div>
         </div>
