@@ -1,16 +1,16 @@
 "use client";
 
-import React from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import menuCardsData from "@/data/menuData";
 import { Star } from "lucide-react";
 
 export default function Food() {
-  const [activeCategory, setActiveCategory] = React.useState("all");
-  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  // 🔥 FLATTEN ITEMS BASED ON CATEGORY
-  const items = React.useMemo(() => {
+  // FLATTEN ITEMS BASED ON CATEGORY
+  const items = useMemo(() => {
     if (activeCategory === "all") {
       return menuCardsData.flatMap((card) => card.content || []);
     }
@@ -23,17 +23,17 @@ export default function Food() {
   }, [activeCategory]);
 
   // 🔁 Reset index when category changes
-  React.useEffect(() => {
+  useEffect(() => {
     setActiveIndex(0);
   }, [activeCategory]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (activeIndex >= items.length) {
       setActiveIndex(0);
     }
   }, [items]);
 
-  // 🎯 Get visible 3 cards (carousel logic)
+  // Get visible 3 cards (carousel logic)
   const getVisibleItems = () => {
     if (items.length === 0) return [];
 
@@ -47,6 +47,9 @@ export default function Food() {
   };
 
   const visible = getVisibleItems();
+
+  // State for Rate Form
+  const [activeRateButton, setActiveRateButton] = useState(false);
 
   return (
     <section className="w-full py-16 bg-[#b44b3f] text-white flex flex-col">
@@ -78,7 +81,7 @@ export default function Food() {
         </div>
       </div>
 
-      {/* 🎴 CAROUSEL */}
+      {/* CAROUSEL */}
       <div className="overflow-hidden">
         <div className="flex items-center justify-center gap-6 py-8">
           {visible.map((item, index) => {
@@ -135,9 +138,32 @@ export default function Food() {
       </div>
 
       {/* BUTTON */}
-      <button className="mt-22 mx-auto bg-black text-white px-12 py-3 rounded-full hover:scale-105 transition">
+      <button
+        onClick={() => setActiveRateButton(true)}
+        className="mt-22 mx-auto bg-black text-white px-12 py-3 rounded-full hover:scale-105 transition"
+      >
         Rate Food →
       </button>
+
+      {activeRateButton && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-[#f6f6f6] rounded-xl w-[90%] max-w-xl h-[54vh] flex flex-col relative">
+            {/* HEADER (fixed) */}
+            <div className="p-6 border-b-2 border-accent flex justify-between items-center">
+              <h2 className="text-primary text-2xl font-medium font-japanese leading-tight tracking-widest">
+                Rate our Food
+              </h2>
+
+              <button
+                onClick={() => setActiveRateButton(false)}
+                className="text-primary text-xl cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
