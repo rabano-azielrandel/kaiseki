@@ -57,7 +57,7 @@ export default function Food() {
 
       {/* CATEGORY PILLS */}
       <div className="px-4 lg:px-12 overflow-hidden">
-        <div className="flex justify-start lg:justify-center gap-4 w-full overflow-x-auto py-2 mb-32 scrollbar-hide">
+        <div className="flex justify-start lg:justify-center gap-4 w-full overflow-x-auto py-2 mb-30 scrollbar-hide">
           {["all", ...menuCardsData.map((c) => c.title.toLowerCase())].map(
             (cat, index) => (
               <button
@@ -96,7 +96,7 @@ export default function Food() {
                     setActiveIndex((prev) => (prev + 1) % items.length);
                 }}
                 className={`cursor-pointer rounded-2xl transition-all duration-300
-                    w-60 h-80 flex flex-col items-center justify-center gap-3 p-4 overflow-hidden shrink-0
+                    w-50 smx:w-60 h-70 smx:h-80 flex flex-col items-center justify-center gap-3 p-4 overflow-hidden shrink-0
                     ${
                       isCenter
                         ? "bg-background text-black scale-110 shadow-xl"
