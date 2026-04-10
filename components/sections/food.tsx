@@ -135,8 +135,8 @@ export default function Food() {
       </div>
 
       {/* BUTTON */}
-      <button className="mt-22 bg-black text-white px-6 py-3 rounded-full hover:scale-105 transition">
-        Explore Food →
+      <button className="mt-22 mx-auto bg-black text-white px-12 py-3 rounded-full hover:scale-105 transition">
+        Rate Food →
       </button>
     </section>
   );
