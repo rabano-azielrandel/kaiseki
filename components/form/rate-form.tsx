@@ -28,7 +28,7 @@ export default function RateForm({ data }: RateFormProps) {
   return (
     <div className="w-full space-y-6">
       {data.map((card) => (
-        <div key={card.id} className="space-y-3">
+        <div key={card.id} className="space-y-3 px-4">
           <h2 className="text-primary text-xl font-bold">{card.title}</h2>
 
           <div className="grid gap-2">
@@ -39,10 +39,7 @@ export default function RateForm({ data }: RateFormProps) {
               return (
                 <DropdownMenu key={key}>
                   <DropdownMenuTrigger asChild>
-                    <Button
-                      variant={"rate"}
-                      className="w-full justify-between bg-background text-primary"
-                    >
+                    <Button variant={"rate"} className="w-full justify-between">
                       <span>{item.name}</span>
                       <span className="text-xs">{currentRating}/5</span>
                     </Button>
