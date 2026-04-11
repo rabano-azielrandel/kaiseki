@@ -34,23 +34,21 @@ export default function About() {
   const [activeDiv, setActiveDiv] = useState<number | null>(0);
 
   return (
-    <div className="min-h-screen flex p-12 gap-8">
+    <div className="min-h-screen flex p-4 md:p-12 gap-2 md:gap-8">
       {/* main content */}
-      <div className="w-[90%] flex flex-col gap-8">
+      <div className="w-[90%] flex flex-col gap-4 md:gap-8">
         {data.map((element, index) => (
           <div
             key={index}
-            onClick={() =>
-              setActiveDiv((prev) => (prev === index ? null : index))
-            }
+            onClick={() => setActiveDiv(index)}
             className={`
               relative flex flex-col justify-between p-8 rounded-2xl cursor-pointer
-              transition-all duration-500 ease-in-out hover:scale-[1.01] hover:shadow-lg
+              transition-all duration-500 ease-in-out hover:scale-[1.01] hover:shadow-lg bg-red-300
 
               ${
                 index === activeDiv
                   ? "flex-[2] bg-secondary text-white shadow-2xl scale-[1.02]"
-                  : "flex-1 bg-white/40 backdrop-blur-md border border-gray-400 text-primary opacity-70 hover:opacity-100"
+                  : "bg-white/40 backdrop-blur-md border border-gray-400 text-primary opacity-70 hover:opacity-100"
               }
             `}
           >
@@ -60,7 +58,7 @@ export default function About() {
                 className={`${index == activeDiv ? "border-b-2 border-accent" : ""}`}
               >
                 <p
-                  className={`font-playfair font-bold text-4xl text-primary leading-tight tracking-widest`}
+                  className={`font-playfair font-bold text-xl md:text-4xl text-primary leading-tight tracking-widest`}
                 >
                   {element.title}
                 </p>
@@ -70,14 +68,16 @@ export default function About() {
                 alt={element.title}
                 width={100}
                 height={100}
-                className="w-28 h-28 object-contain"
+                className="w-18 md:w-28 h-18 md:h-28 object-contain"
               />
             </div>
 
             {/* conditional */}
             {activeDiv === index && (
               <div className="w-full mt-4 animate-fadeSlide">
-                <p className="text-primary leading-tight">{element.content}</p>
+                <p className="text-primary font-playfair font-medium leading-tight tracking-wider">
+                  {element.content}
+                </p>
               </div>
             )}
           </div>
@@ -86,7 +86,7 @@ export default function About() {
 
       {/* Title */}
       <div className="w-[8%] py-4 bg-accent">
-        <h2 className="writing-vertical text-primary text-3xl lg:text-5xl font-japanese leading-tight tracking-[0.2em]">
+        <h2 className="writing-vertical text-primary text-lg md:text-3xl lg:text-5xl font-japanese leading-tight tracking-[0.2em]">
           About Us
         </h2>
       </div>
