@@ -4,6 +4,7 @@ import Menu from "@/components/sections/menu";
 import Food from "@/components/sections/food";
 import Service from "@/components/sections/service";
 import About from "@/components/sections/about";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Service />
         <About />
       </main>
+      <Footer />
     </div>
   );
 }
