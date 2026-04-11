@@ -2,6 +2,7 @@ import Navbar from "@/components/navbar";
 import Hero from "@/components/sections/hero";
 import Menu from "@/components/sections/menu";
 import Food from "@/components/sections/food";
+import Service from "@/components/sections/service";
 import About from "@/components/sections/about";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
         <Hero />
         <Menu />
         <Food />
+        <Service />
         <About />
       </main>
     </div>

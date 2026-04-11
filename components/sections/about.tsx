@@ -34,7 +34,7 @@ export default function About() {
   const [activeDiv, setActiveDiv] = useState<number | null>(0);
 
   return (
-    <div className="min-h-screen flex p-4 md:p-12 gap-2 md:gap-8">
+    <div className="flex p-4 md:p-12 gap-2 md:gap-8">
       {/* main content */}
       <div className="w-[90%] flex flex-col gap-4 md:gap-8">
         {data.map((element, index) => (

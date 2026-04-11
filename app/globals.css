@@ -34,6 +34,7 @@
   --font-mono: var(--font-geist-mono);
   --font-jakarta-sans: var(--font-jakarta);
   --font-playfair: "Playfair Display", serif;
+  --font-inter: "Inter, serif";
 
   /* Breakpoints */
   --breakpoint-xss: 320px;
