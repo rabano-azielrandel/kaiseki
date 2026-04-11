@@ -6,32 +6,32 @@ import { useState } from "react";
 const data = [
   {
     title: "About Kaiseki",
-    image: "/icons/maguro.png",
+    image: "/icons/about.png",
     content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat",
+      "Kaiseki is a traditional Japanese fine dining experience that celebrates harmony, seasonality, and craftsmanship. Each dish is carefully prepared to highlight natural flavors, presented with precision and artistic balance. At our restaurant, we bring this philosophy to life—offering a curated journey through authentic Japanese cuisine.",
   },
   {
     title: "Values and Culture",
-    image: "/icons/maguro.png",
+    image: "/icons/values_culture2.png",
     content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat",
+      "We are guided by the principles of respect, simplicity, and attention to detail. Every ingredient is thoughtfully selected, every plate intentionally designed. Our team embraces the spirit of omotenashi—wholehearted hospitality—ensuring that every guest feels welcomed, valued, and immersed in a meaningful dining experience.",
   },
   {
     title: "Our Goals",
-    image: "/icons/maguro.png",
+    image: "/icons/goals3.png",
     content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat",
+      "Our goal is to share the essence of Japanese culinary artistry while creating memorable moments for our guests. We strive to continuously refine our craft, innovate with purpose, and maintain the highest standards of quality, authenticity, and service in every dish we serve.",
   },
   {
     title: "Our Branches",
-    image: "/icons/maguro.png",
+    image: "/icons/branch.png",
     content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat",
+      "Our presence continues to grow, bringing the Kaiseki experience closer to you. Each branch is designed to reflect a calm and refined atmosphere, inspired by Japanese aesthetics. While locations may vary, our commitment to excellence, authenticity, and hospitality remains consistent across all branches.",
   },
 ];
 
 export default function About() {
-  const [activeDiv, setActiveDiv] = useState<number | null>(null);
+  const [activeDiv, setActiveDiv] = useState<number | null>(0);
 
   return (
     <div className="min-h-screen flex p-12 gap-8">
@@ -43,15 +43,28 @@ export default function About() {
             onClick={() =>
               setActiveDiv((prev) => (prev === index ? null : index))
             }
-            className={`${
-              index === activeDiv ? "flex-[2]" : "flex-1"
-            } flex flex-col justify-center p-8 rounded-2xl border border-primary transition-all duration-300 cursor-pointer`}
+            className={`
+              relative flex flex-col justify-between p-8 rounded-2xl cursor-pointer
+              transition-all duration-500 ease-in-out hover:scale-[1.01] hover:shadow-lg
+
+              ${
+                index === activeDiv
+                  ? "flex-[2] bg-secondary text-white shadow-2xl scale-[1.02]"
+                  : "flex-1 bg-white/40 backdrop-blur-md border border-gray-400 text-primary opacity-70 hover:opacity-100"
+              }
+            `}
           >
             {/* always visible */}
             <div className=" min-w-full flex justify-between items-center">
-              <p className="font-playfair font-bold text-4xl leading-tight tracking-widest">
-                {element.title}
-              </p>
+              <div
+                className={`${index == activeDiv ? "border-b-2 border-accent" : ""}`}
+              >
+                <p
+                  className={`font-playfair font-bold text-4xl text-primary leading-tight tracking-widest`}
+                >
+                  {element.title}
+                </p>
+              </div>
               <Image
                 src={element.image}
                 alt={element.title}
@@ -63,8 +76,8 @@ export default function About() {
 
             {/* conditional */}
             {activeDiv === index && (
-              <div className="w-full mt-4">
-                <p className="leading-tight">{element.content}</p>
+              <div className="w-full mt-4 animate-fadeSlide">
+                <p className="text-primary leading-tight">{element.content}</p>
               </div>
             )}
           </div>
