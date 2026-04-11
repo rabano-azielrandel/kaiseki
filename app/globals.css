@@ -17,7 +17,7 @@
   --secondary: 0 0% 0%; /* black */
   --accent: 5 45% 50%; /* same accent (optional) */
   --white: 0 0% 100%;
-  --text:        
+  --text:            
 ;
 }
 
@@ -61,6 +61,11 @@
 @layer utilities {
   .flex-center {
     @apply flex justify-center items-center;
+  }
+
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
   }
 }
 
