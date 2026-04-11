@@ -67,7 +67,7 @@ export default function Food() {
               <button
                 key={index}
                 onClick={() => setActiveCategory(cat)}
-                className={`shrink-0 px-5 py-2 rounded-full border text-sm whitespace-nowrap transition
+                className={`shrink-0 px-5 py-2 rounded-full border text-sm whitespace-nowrap transition cursor-pointer
             ${
               activeCategory === cat
                 ? "bg-background text-black"
