@@ -52,10 +52,10 @@ export default function Menu() {
 
               {/* TEXT */}
               <div className="hidden sm:flex flex-col justify-center">
-                <CardTitle className="text-base leading-tight">
+                <CardTitle className="text-base font-playfair font-semibold leading-tight">
                   {card.title}
                 </CardTitle>
-                <CardDescription className="text-sm">
+                <CardDescription className="text-sm font-jakarta-sans font-light leading-relaxed tracking-tight">
                   {card.description}
                 </CardDescription>
               </div>

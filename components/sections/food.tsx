@@ -75,7 +75,9 @@ export default function Food() {
             }
           `}
               >
-                <p className="text-primary">{cat}</p>
+                <p className="text-primary font-jakarta-sans font-light">
+                  {cat}
+                </p>
               </button>
             ),
           )}
@@ -120,7 +122,7 @@ export default function Food() {
                 </div>
 
                 {/* NAME */}
-                <h3 className="text-primary text-base font-semibold text-center capitalize line-clamp-2">
+                <h3 className="text-primary text-base font-semibold font-playfair text-center capitalize line-clamp-2">
                   {item.name}
                 </h3>
 
