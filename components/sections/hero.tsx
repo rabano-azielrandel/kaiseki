@@ -98,16 +98,12 @@ export default function Hero() {
 
       <Modal isOpen={isOrderNow} onClose={() => setIsOrderNow(false)}>
         <h2 className="text-xl font-semibold">Order Now</h2>
-        <p className="mt-2 text-sm text-gray-500">
-          This is your order popup content.
-        </p>
+        <p className="mt-2 text-sm text-gray-500">Coming Soon..</p>
       </Modal>
 
       <Modal isOpen={isHowToOrder} onClose={() => setIsHowToOrder(false)}>
         <h2 className="text-xl font-semibold">How to Order</h2>
-        <p className="mt-2 text-sm text-gray-500">
-          Step-by-step guide goes here.
-        </p>
+        <p className="mt-2 text-sm text-gray-500">Coming Soon..</p>
       </Modal>
     </section>
   );
