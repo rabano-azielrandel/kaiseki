@@ -34,15 +34,21 @@ export default function About() {
   const [activeDiv, setActiveDiv] = useState<number | null>(0);
 
   return (
-    <div className="flex p-4 md:p-12 gap-2 md:gap-8">
+    <div className="flex flex-col p-4 md:p-12 justify-center gap-8">
+      {/* Title */}
+      <div className="border-b-2 border-primary py-4">
+        <p className="font-playfair font-bold text-center lg:text-left text-2xl tracking-wider">
+          About Us
+        </p>
+      </div>
       {/* main content */}
-      <div className="w-[90%] flex flex-col gap-4 md:gap-8">
+      <div className="flex flex-col gap-4 md:gap-8">
         {data.map((element, index) => (
           <div
             key={index}
             onClick={() => setActiveDiv(index)}
             className={`
-              relative flex flex-col justify-between p-8 rounded-2xl cursor-pointer
+              relative flex flex-col justify-between p-8 rounded-md cursor-pointer
               transition-all duration-500 ease-in-out hover:scale-[1.01] hover:shadow-lg bg-red-300
 
               ${
@@ -82,13 +88,6 @@ export default function About() {
             )}
           </div>
         ))}
-      </div>
-
-      {/* Title */}
-      <div className="w-[8%] py-4 bg-accent">
-        <h2 className="writing-vertical text-primary text-lg md:text-3xl lg:text-5xl font-japanese leading-tight tracking-[0.2em]">
-          About Us
-        </h2>
       </div>
     </div>
   );
