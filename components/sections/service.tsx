@@ -95,7 +95,7 @@ export default function Service() {
     <div className="min-h-screen flex flex-col py-4 gap-6 md:gap-12 p-4 md:p-0">
       <div className="border-b-2 py-4 border-primary">
         <p className="font-playfair font-bold text-center lg:text-left text-2xl tracking-wider">
-          SERVICES
+          Services
         </p>
       </div>
 
