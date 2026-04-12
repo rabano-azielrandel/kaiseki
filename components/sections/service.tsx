@@ -1,57 +1,14 @@
 import Image from "next/image";
+import { services } from "@/data/serviceData";
+import {
+  ServiceMainProps,
+  ServiceSubProps,
+  ServiceRowProps,
+} from "@/types/serviceTypes";
 
-const services = [
-  {
-    id: "01",
-    title: "Seasonal Tasting Experience",
-    subtitle: "A signature multi-course journey crafted by your chef.",
-    mainTitle: "The Bluefin Trilogy",
-    mainDesc:
-      "A reservation-only tasting of 6–12 seasonal courses with optional wine and sake pairings.",
-    mainImage: "/images/service6.png",
-    subImage: "/images/service7.png",
-    reverse: false,
-  },
-  {
-    id: "02",
-    title: "Private Dining & Chef's Table",
-    subtitle: "An exclusive, high-end experience.",
-    mainTitle: "The Kaiseki Nocturne",
-    mainDesc:
-      "A private chef's table experience with curated menus, crafted for intimate and memorable occasions.",
-    mainImage: "/images/service5.png",
-    subImage: "/images/service8.png",
-    reverse: true,
-  },
-  {
-    id: "03",
-    title: "À La Carte Dining",
-    subtitle:
-      "For guests who want flexibility without committing to a full course.",
-    mainTitle: "The Umami Selection",
-    mainDesc:
-      "A flexible selection of individually crafted premium dishes for a refined dining experience.",
-    mainImage: "/images/service9.png",
-    subImage: "/images/service1.png",
-    reverse: false,
-  },
-  {
-    id: "04",
-    title: "Curated Online Ordering",
-    subtitle:
-      "A refined at-home Kaiseki experience, thoughtfully prepared by our chefs.",
-    mainTitle: "The Shokado Selection",
-    mainDesc:
-      "A curated at-home Kaiseki experience with chef's selections, elegant packaging, and optional pairings.",
-    mainImage: "/images/service10.png",
-    subImage: "/images/service11.png",
-    reverse: true,
-  },
-];
-
-function ServiceMain({ title, desc, image }: any) {
+function ServiceMain({ title, desc, image }: ServiceMainProps) {
   return (
-    <div className="relative w-[65%] shadow-2xl overflow-hidden">
+    <div className="relative w-full md:w-[65%] shadow-2xl overflow-hidden">
       <Image
         src={image}
         alt="service"
@@ -63,8 +20,10 @@ function ServiceMain({ title, desc, image }: any) {
       <div className="absolute inset-0 bg-black/40" />
 
       <div className="relative z-10 flex flex-col justify-end h-[80%] p-6 gap-4 text-[#FEEDDC]">
-        <p className="text-6xl font-semibold font-playfair">{title}</p>
-        <p className="indent-2 text-base font-light font-jakarta-sans">
+        <p className="text-4xl md:text-6xl font-semibold font-playfair">
+          {title}
+        </p>
+        <p className="indent-0 lg:indent-2 text-xs md:text-base font-light font-jakarta-sans">
           {desc}
         </p>
       </div>
@@ -72,9 +31,9 @@ function ServiceMain({ title, desc, image }: any) {
   );
 }
 
-function ServiceSub({ id, title, subtitle, subImage }: any) {
+function ServiceSub({ id, title, subtitle, subImage }: ServiceSubProps) {
   return (
-    <div className="w-[35%] h-105 flex flex-col px-12 gap-4 overflow-hidden shadow-2xl border border-black/3">
+    <div className="w-full md:w-[35%] h-105 flex flex-col px-12 gap-4 overflow-hidden shadow-2xl border border-black/3">
       <div className="flex flex-col gap-2 pt-4">
         <p className="text-5xl font-playfair">{id}</p>
         <p className="text-2xl font-playfair">{title}</p>
@@ -94,35 +53,46 @@ function ServiceSub({ id, title, subtitle, subImage }: any) {
   );
 }
 
-function ServiceRow({ service }: any) {
+function ServiceRow({ service }: ServiceRowProps) {
   return (
-    <div className="flex gap-8">
-      {service.reverse ? (
-        <>
-          <ServiceMain
-            title={service.mainTitle}
-            desc={service.mainDesc}
-            image={service.mainImage}
-          />
-          <ServiceSub {...service} />
-        </>
-      ) : (
-        <>
-          <ServiceSub {...service} />
-          <ServiceMain
-            title={service.mainTitle}
-            desc={service.mainDesc}
-            image={service.mainImage}
-          />
-        </>
-      )}
-    </div>
+    <>
+      <div className="hidden md:flex flex-col md:flex-row gap-2 md:gap-8">
+        {service.reverse ? (
+          <>
+            <ServiceMain
+              title={service.mainTitle}
+              desc={service.mainDesc}
+              image={service.mainImage}
+            />
+            <ServiceSub {...service} />
+          </>
+        ) : (
+          <>
+            <ServiceSub {...service} />
+            <ServiceMain
+              title={service.mainTitle}
+              desc={service.mainDesc}
+              image={service.mainImage}
+            />
+          </>
+        )}
+      </div>
+
+      <div className="flex md:hidden flex-col md:flex-row gap-2 md:gap-8">
+        <ServiceSub {...service} />
+        <ServiceMain
+          title={service.mainTitle}
+          desc={service.mainDesc}
+          image={service.mainImage}
+        />
+      </div>
+    </>
   );
 }
 
 export default function Service() {
   return (
-    <div className="min-h-screen flex flex-col py-4 gap-12">
+    <div className="min-h-screen flex flex-col py-4 gap-6 md:gap-12 p-4 md:p-0">
       <div className="border-b-2 py-4 border-primary">
         <p className="font-playfair font-bold text-center lg:text-left text-2xl tracking-wider">
           SERVICES
