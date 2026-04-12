@@ -53,7 +53,10 @@ export default function Food() {
   const [activeRateButton, setActiveRateButton] = useState(false);
 
   return (
-    <section className="w-full py-16 bg-[#b44b3f] text-white flex flex-col">
+    <section
+      id="FOOD"
+      className="w-full py-16 bg-[#b44b3f] text-white flex flex-col"
+    >
       {/* TITLE */}
       <h2 className="text-primary text-3xl lg:text-5xl text-center font-playfair font-semibold leading-tight tracking-widest mb-12">
         Food Ratings

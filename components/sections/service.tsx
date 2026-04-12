@@ -92,7 +92,10 @@ function ServiceRow({ service }: ServiceRowProps) {
 
 export default function Service() {
   return (
-    <div className="min-h-screen flex flex-col py-4 gap-6 md:gap-12 p-4 md:p-0">
+    <section
+      id="SERVICES"
+      className="min-h-screen flex flex-col py-4 gap-6 md:gap-12 p-4 md:p-0"
+    >
       <div className="border-b-2 py-4 border-primary">
         <p className="font-playfair font-bold text-center lg:text-left text-2xl tracking-wider">
           Services
@@ -102,6 +105,6 @@ export default function Service() {
       {services.map((service) => (
         <ServiceRow key={service.id} service={service} />
       ))}
-    </div>
+    </section>
   );
 }

@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { CardType } from "@/types/menuTypes";
 import MenuCardsData from "@/data/menuData";
+import { Section } from "lucide-react";
 
 export default function Menu() {
   const [selectedCard, setSelectedCard] = React.useState<CardType | null>(null);
@@ -23,7 +24,7 @@ export default function Menu() {
   }, [selectedCard]);
 
   return (
-    <div className="flex flex-col gap-20 px-4 py-28" id="#menu">
+    <section id="MENU" className="flex flex-col gap-20 px-4 py-28">
       <div className="border-b-2 py-4 border-primary">
         <p className="font-playfair font-bold text-center lg:text-left text-2xl leading-tight tracking-wider">
           Kaiseki Signature
@@ -130,6 +131,6 @@ export default function Menu() {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 }

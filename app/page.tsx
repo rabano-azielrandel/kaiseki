@@ -5,6 +5,7 @@ import Food from "@/components/sections/food";
 import Service from "@/components/sections/service";
 import About from "@/components/sections/about";
 import Footer from "@/components/footer";
+import ScrollToTopButton from "@/components/ui/scroll-to-top-button";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Food />
         <Service />
         <About />
+        <ScrollToTopButton />
       </main>
       <Footer />
     </div>

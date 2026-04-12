@@ -34,7 +34,10 @@ export default function About() {
   const [activeDiv, setActiveDiv] = useState<number | null>(0);
 
   return (
-    <div className="flex flex-col p-4 md:p-12 justify-center gap-8">
+    <section
+      id="ABOUT"
+      className="flex flex-col p-4 md:p-12 justify-center gap-8"
+    >
       {/* Title */}
       <div className="border-b-2 border-primary py-4">
         <p className="font-playfair font-bold text-center lg:text-left text-2xl tracking-wider">
@@ -89,6 +92,6 @@ export default function About() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

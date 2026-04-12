@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { useState } from "react";
+import Modal from "../ui/modal";
 
 const foods = [
   {
@@ -22,8 +26,10 @@ const foods = [
 ];
 
 export default function Hero() {
+  const [isOrderNow, setIsOrderNow] = useState(false);
+  const [isHowToOrder, setIsHowToOrder] = useState(false);
   return (
-    <div className="flex flex-col lg:flex-row">
+    <section id="HERO" className="flex flex-col lg:flex-row">
       {/* subject image */}
       <div className="relative w-full lg:w-[45%] h-80 lg:h-[calc(100vh-10rem)] px-4 overflow-hidden">
         <div className="w-[80%] h-full flex bg-[#B74F46]" />
@@ -55,6 +61,7 @@ export default function Hero() {
         {/* CTA */}
         <div className="flex items-center gap-8">
           <Button
+            onClick={() => setIsOrderNow((prev) => !prev)}
             variant="default"
             className="text-secondary rounded-full cursor-pointer px-4 py-2 text-sm lg:px-8 lg:py-7 lg:text-base"
           >
@@ -62,6 +69,7 @@ export default function Hero() {
           </Button>
 
           <Button
+            onClick={() => setIsHowToOrder((prev) => !prev)}
             variant="outline"
             className="text-primary rounded-full cursor-pointer px-4 py-2 text-sm lg:px-6 lg:py-7 lg:text-base"
           >
@@ -87,6 +95,20 @@ export default function Hero() {
           ))}
         </div>
       </div>
-    </div>
+
+      <Modal isOpen={isOrderNow} onClose={() => setIsOrderNow(false)}>
+        <h2 className="text-xl font-semibold">Order Now</h2>
+        <p className="mt-2 text-sm text-gray-500">
+          This is your order popup content.
+        </p>
+      </Modal>
+
+      <Modal isOpen={isHowToOrder} onClose={() => setIsHowToOrder(false)}>
+        <h2 className="text-xl font-semibold">How to Order</h2>
+        <p className="mt-2 text-sm text-gray-500">
+          Step-by-step guide goes here.
+        </p>
+      </Modal>
+    </section>
   );
 }
