@@ -55,7 +55,7 @@ export default function Food() {
   return (
     <section className="w-full py-16 bg-[#b44b3f] text-white flex flex-col">
       {/* TITLE */}
-      <h2 className="text-primary text-3xl lg:text-5xl text-center font-japanese leading-tight tracking-widest mb-12">
+      <h2 className="text-primary text-3xl lg:text-5xl text-center font-playfair font-semibold leading-tight tracking-widest mb-12">
         Food Ratings
       </h2>
 
