@@ -61,13 +61,14 @@ export default function FoodEditorial() {
         <div className="grid lg:grid-cols-2 gap-16 h-[520px]">
           {/* LEFT — FIXED */}
           <div className="flex flex-col gap-6 h-full">
-            <div className="relative flex-center w-full h-[65%] overflow-hidden">
+            <div className="relative w-full h-[65%] overflow-hidden">
               <Image
                 src={activeItem.image}
                 alt={activeItem.name}
-                width={350}
-                height={350}
-                className="h-[65%] object-contain"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-contain"
+                priority
               />
             </div>
 
@@ -97,7 +98,7 @@ export default function FoodEditorial() {
 
           {/* RIGHT — SCROLLABLE */}
           <div className="h-full overflow-y-auto pr-4">
-            <div className="flex flex-col divide-y divide-white/10">
+            <div className="flex flex-col divide-y divide-primary/10">
               {items.map((item, index) => {
                 const isActive = index === activeIndex;
 
@@ -114,7 +115,7 @@ export default function FoodEditorial() {
                   >
                     <div>
                       <p className="tracking-wide">{item.name}</p>
-                      <p className="text-xs text-primary/40 mt-1">
+                      <p className="text-xs mt-1">
                         {Number(item.rating).toFixed(1)} rating
                       </p>
                     </div>
