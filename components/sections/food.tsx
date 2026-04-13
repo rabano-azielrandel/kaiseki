@@ -77,7 +77,7 @@ export default function FoodEditorial() {
 
             <div className="flex flex-col justify-between flex-1">
               <div>
-                <h3 className="text-2xl font-playfair tracking-wide">
+                <h3 className="text-2xl font-playfair font-semibold tracking-wide">
                   {activeItem.name}
                 </h3>
 
