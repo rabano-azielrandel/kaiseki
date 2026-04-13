@@ -31,7 +31,7 @@ const data = [
 
 export default function About() {
   return (
-    <section className="w-full px-6 md:px-16 py-20 bg-[#e9dfd2]">
+    <section id="ABOUT" className="w-full px-6 md:px-16 py-20 bg-[#e9dfd2]">
       {/* Title */}
       <div className="mb-16">
         <h2 className="font-playfair text-4xl md:text-5xl text-primary">

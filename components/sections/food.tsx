@@ -30,7 +30,7 @@ export default function FoodEditorial() {
   if (!activeItem) return null;
 
   return (
-    <section className="w-full py-24 bg-accent text-primary">
+    <section id="FOOD" className="w-full py-24 bg-accent text-primary">
       {/* TITLE */}
       <h2 className="text-center text-4xl lg:text-5xl font-playfair font-bold tracking-widest mb-16">
         Food Experience
