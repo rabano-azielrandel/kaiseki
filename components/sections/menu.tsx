@@ -34,7 +34,7 @@ export default function Menu() {
       const isScrollingDown = currentScrollY > lastScrollY;
       const isScrollingUp = currentScrollY < lastScrollY;
 
-      const section = document.getElementById("HERO");
+      const section = document.getElementById("MENU");
       if (!section) return;
 
       const rect = section.getBoundingClientRect();

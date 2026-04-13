@@ -19,7 +19,7 @@ function ServiceMain({
   return (
     <div
       className={`slide ${
-        isAnimate ? "slide-reset" : reverse ? "slide-right" : "slide-left"
+        isAnimate ? (reverse ? "slide-right" : "slide-left") : "slide-reset"
       } relative w-full md:w-[65%] shadow-2xl overflow-hidden`}
     >
       <Image
@@ -55,7 +55,7 @@ function ServiceSub({
   return (
     <div
       className={`slide ${
-        isAnimate ? "slide-reset" : reverse ? "slide-left" : "slide-right"
+        isAnimate ? (reverse ? "slide-right" : "slide-left") : "slide-reset"
       } w-full md:w-[35%] h-105 flex flex-col px-12 gap-4 overflow-hidden shadow-2xl border border-black/3`}
     >
       <div className="flex flex-col gap-2 pt-4">
@@ -147,7 +147,7 @@ export default function Service() {
       const isScrollingDown = currentScrollY > lastScrollY;
       const isScrollingUp = currentScrollY < lastScrollY;
 
-      const section = document.getElementById("HERO");
+      const section = document.getElementById("SERVICES");
       if (!section) return;
 
       const rect = section.getBoundingClientRect();

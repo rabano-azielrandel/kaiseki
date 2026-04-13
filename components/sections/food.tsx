@@ -40,7 +40,7 @@ export default function FoodEditorial() {
       const isScrollingDown = currentScrollY > lastScrollY;
       const isScrollingUp = currentScrollY < lastScrollY;
 
-      const section = document.getElementById("HERO");
+      const section = document.getElementById("FOOD");
       if (!section) return;
 
       const rect = section.getBoundingClientRect();
@@ -66,6 +66,7 @@ export default function FoodEditorial() {
 
   return (
     <section
+      id="FOOD"
       style={{
         transitionDelay: `${2 * 100}ms`,
       }}
