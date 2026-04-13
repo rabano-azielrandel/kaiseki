@@ -21,12 +21,25 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "kaiseki",
+  title: "Kaiseki",
   description: "Japanese dining experience",
 
+  metadataBase: new URL("https://rabano-azielrandel-kaiseki.vercel.app"),
+
   openGraph: {
-    url: "https://kaiseki.vercel.app",
+    title: "Kaiseki",
+    description: "Japanese dining experience",
+    url: "https://rabano-azielrandel-kaiseki.vercel.app/",
     siteName: "Kaiseki",
+    type: "website",
+    images: [
+      {
+        url: "/icons/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Kaiseki Japanese Dining",
+      },
+    ],
   },
 
   robots: {
@@ -34,7 +47,6 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
