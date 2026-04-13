@@ -7,20 +7,20 @@ import Modal from "../ui/modal";
 
 const foods = [
   {
-    img: "/icons/shrimp-sushi.png",
+    img: "/icons/shrimp-sushi2.png",
     class: "w-8 lg:w-12 h-8 lg:h-12 object-contain",
   },
   {
-    img: "/icons/sushi-3.png",
+    img: "/icons/sushi-4.png",
     class: "w-8 lg:w-12 h-8 lg:h-12 object-contain",
   },
-  { img: "/icons/tea.png", class: "w-8 lg:w-12 h-8 lg:h-12 object-contain" },
-  { img: "/icons/tonkatsu.png", class: "w-14 h-14 object-contain" },
-  { img: "/icons/gyoza.png", class: "w-14 h-14 object-contain" },
-  { img: "/icons/ramen.png", class: "w-14 h-14 object-contain" },
-  { img: "/icons/tempura.png", class: "w-14 h-14 object-contain" },
+  { img: "/icons/tea2.png", class: "w-8 lg:w-12 h-8 lg:h-12 object-contain" },
+  { img: "/icons/tonkatsu4.png", class: "w-14 h-14 object-contain" },
+  { img: "/icons/gyoza2.png", class: "w-14 h-14 object-contain" },
+  { img: "/icons/ramen3.png", class: "w-14 h-14 object-contain" },
+  { img: "/icons/tempura3.png", class: "w-14 h-14 object-contain" },
   {
-    img: "/icons/icedcoffee.png",
+    img: "/icons/icedcoffee2.png",
     class: "w-8 lg:w-12 h-8 lg:h-12 object-contain",
   },
 ];
@@ -78,7 +78,7 @@ export default function Hero() {
         </div>
 
         {/* footer icons */}
-        <div className="flex gap-6 lg:gap-8 overflow-x-scroll overflow-y-hidden lg:overflow-x-visible">
+        <div className="flex gap-6 lg:gap-8 overflow-x-scroll lg:overflow-x-visible overflow-y-hidden md:overflow-y-visible">
           {foods.map((element, index) => (
             <div
               key={index}
