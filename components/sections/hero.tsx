@@ -36,7 +36,7 @@ export default function Hero() {
 
         <div className="absolute inset-0">
           <Image
-            src="/icons/subject2.png"
+            src="/icons/subject3.png"
             alt="subject"
             fill
             priority

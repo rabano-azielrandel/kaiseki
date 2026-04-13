@@ -45,7 +45,7 @@ function ServiceSub({ id, title, subtitle, subImage }: ServiceSubProps) {
           src={subImage}
           alt="service"
           fill
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 35vw"
           className="object-cover scale-110"
         />
       </div>

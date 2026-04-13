@@ -1,94 +1,82 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 
 const data = [
   {
     title: "About Kaiseki",
     image: "/icons/about.png",
     content:
-      "Kaiseki is a traditional Japanese fine dining experience that celebrates harmony, seasonality, and craftsmanship. Each dish is carefully prepared to highlight natural flavors, presented with precision and artistic balance. At our restaurant, we bring this philosophy to life—offering a curated journey through authentic Japanese cuisine.",
+      "Kaiseki is a traditional Japanese fine dining experience that celebrates harmony, seasonality, and craftsmanship.",
   },
   {
     title: "Values and Culture",
     image: "/icons/values_culture2.png",
     content:
-      "We are guided by the principles of respect, simplicity, and attention to detail. Every ingredient is thoughtfully selected, every plate intentionally designed. Our team embraces the spirit of omotenashi—wholehearted hospitality—ensuring that every guest feels welcomed, valued, and immersed in a meaningful dining experience.",
+      "We are guided by the principles of respect, simplicity, and attention to detail.",
   },
   {
     title: "Our Goals",
     image: "/icons/goals3.png",
     content:
-      "Our goal is to share the essence of Japanese culinary artistry while creating memorable moments for our guests. We strive to continuously refine our craft, innovate with purpose, and maintain the highest standards of quality, authenticity, and service in every dish we serve.",
+      "Our goal is to share the essence of Japanese culinary artistry while creating memorable moments.",
   },
   {
     title: "Our Branches",
-    image: "/icons/branch.png",
+    image: "/icons/branch3.png",
     content:
-      "Our presence continues to grow, bringing the Kaiseki experience closer to you. Each branch is designed to reflect a calm and refined atmosphere, inspired by Japanese aesthetics. While locations may vary, our commitment to excellence, authenticity, and hospitality remains consistent across all branches.",
+      "Each branch reflects a calm and refined atmosphere inspired by Japanese aesthetics.",
   },
 ];
 
 export default function About() {
-  const [activeDiv, setActiveDiv] = useState<number | null>(0);
-
   return (
-    <section
-      id="ABOUT"
-      className="flex flex-col p-4 md:p-12 justify-center gap-8"
-    >
+    <section className="w-full px-6 md:px-16 py-20 bg-[#e9dfd2]">
       {/* Title */}
-      <div className="border-b-2 border-primary py-4">
-        <p className="font-playfair font-bold text-center lg:text-left text-2xl tracking-wider">
+      <div className="mb-16">
+        <h2 className="font-playfair text-4xl md:text-5xl text-primary">
           About Us
-        </p>
+        </h2>
       </div>
-      {/* main content */}
-      <div className="flex flex-col gap-4 md:gap-8">
-        {data.map((element, index) => (
+
+      {/* Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        {data.map((item, index) => (
           <div
             key={index}
-            onClick={() => setActiveDiv(index)}
             className={`
-              relative flex flex-col justify-between p-8 rounded-md cursor-pointer
-              transition-all duration-500 ease-in-out hover:scale-[1.01] hover:shadow-lg bg-red-300
-
-              ${
-                index === activeDiv
-                  ? "flex-[2] bg-secondary text-white shadow-2xl scale-[1.02]"
-                  : "bg-white/40 backdrop-blur-md border border-gray-400 text-primary opacity-70 hover:opacity-100"
-              }
+              flex flex-col gap-6 group
+              
+              /* stagger effect ONLY on large screens */
+              ${index % 2 !== 0 ? "lg:mt-16" : ""}
             `}
           >
-            {/* always visible */}
-            <div className=" min-w-full flex justify-between items-center">
-              <div
-                className={`${index == activeDiv ? "border-b-2 border-accent" : ""}`}
-              >
-                <p
-                  className={`font-playfair font-bold text-xl md:text-4xl text-primary leading-tight tracking-widest`}
-                >
-                  {element.title}
-                </p>
-              </div>
+            {/* Image */}
+            <div className="relative w-full aspect-square bg-black overflow-hidden">
               <Image
-                src={element.image}
-                alt={element.title}
-                width={100}
-                height={100}
-                className="w-18 md:w-28 h-18 md:h-28 object-contain"
+                src={item.image}
+                alt={item.title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-contain p-8 grayscale transition duration-700 hover:grayscale-0 group-hover:scale-105 cursor-pointer"
               />
             </div>
 
-            {/* conditional */}
-            {activeDiv === index && (
-              <div className="w-full mt-4 animate-fadeSlide">
-                <p className="text-primary font-playfair font-medium leading-tight tracking-wider">
-                  {element.content}
-                </p>
-              </div>
-            )}
+            {/* Text */}
+            <div className="flex flex-col gap-3">
+              <h3 className="font-playfair text-2xl text-primary">
+                {item.title}
+              </h3>
+
+              <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                {item.content}
+              </p>
+
+              {/* Index */}
+              <span className="text-xs text-red-400 tracking-widest mt-2">
+                — {String(index + 1).padStart(2, "0")}
+              </span>
+            </div>
           </div>
         ))}
       </div>
