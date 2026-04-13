@@ -76,7 +76,7 @@ export default function Menu() {
             >
               {/* HEADER (fixed) */}
               <div className="p-6 border-b-2 border-accent flex justify-between items-center">
-                <h2 className="text-2xl font-medium font-japanese leading-tight tracking-widest">
+                <h2 className="text-2xl font-bold font-playfair leading-tight tracking-widest">
                   {selectedCard.title}
                 </h2>
 
