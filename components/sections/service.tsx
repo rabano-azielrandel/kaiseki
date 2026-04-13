@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { services } from "@/data/serviceData";
 import {
   ServiceMainProps,
@@ -9,19 +6,9 @@ import {
   ServiceRowProps,
 } from "@/types/serviceTypes";
 
-function ServiceMain({
-  title,
-  desc,
-  image,
-  isAnimate,
-  reverse,
-}: ServiceMainProps & { isAnimate: boolean; reverse: boolean }) {
+function ServiceMain({ title, desc, image }: ServiceMainProps) {
   return (
-    <div
-      className={`slide ${
-        isAnimate ? (reverse ? "slide-right" : "slide-left") : "slide-reset"
-      } relative w-full md:w-[65%] shadow-2xl overflow-hidden`}
-    >
+    <div className="relative w-full md:w-[65%] shadow-2xl overflow-hidden">
       <Image
         src={image}
         alt="service"
@@ -44,20 +31,9 @@ function ServiceMain({
   );
 }
 
-function ServiceSub({
-  id,
-  title,
-  subtitle,
-  subImage,
-  isAnimate,
-  reverse,
-}: ServiceSubProps & { isAnimate: boolean; reverse: boolean }) {
+function ServiceSub({ id, title, subtitle, subImage }: ServiceSubProps) {
   return (
-    <div
-      className={`slide ${
-        isAnimate ? (reverse ? "slide-right" : "slide-left") : "slide-reset"
-      } w-full md:w-[35%] h-105 flex flex-col px-12 gap-4 overflow-hidden shadow-2xl border border-black/3`}
-    >
+    <div className="w-full md:w-[35%] h-105 flex flex-col px-12 gap-4 overflow-hidden shadow-2xl border border-black/3">
       <div className="flex flex-col gap-2 pt-4">
         <p className="text-5xl font-playfair">{id}</p>
         <p className="text-2xl font-playfair">{title}</p>
@@ -77,7 +53,7 @@ function ServiceSub({
   );
 }
 
-function ServiceRow({ service, isAnimate }: ServiceRowProps) {
+function ServiceRow({ service }: ServiceRowProps) {
   return (
     <>
       <div className="hidden md:flex flex-col md:flex-row gap-2 md:gap-8">
@@ -87,48 +63,27 @@ function ServiceRow({ service, isAnimate }: ServiceRowProps) {
               title={service.mainTitle}
               desc={service.mainDesc}
               image={service.mainImage}
-              isAnimate={isAnimate}
-              reverse={service.reverse}
             />
-
-            <ServiceSub
-              {...service}
-              isAnimate={isAnimate}
-              reverse={service.reverse}
-            />
+            <ServiceSub {...service} />
           </>
         ) : (
           <>
-            <ServiceSub
-              {...service}
-              isAnimate={isAnimate}
-              reverse={service.reverse}
-            />
-
+            <ServiceSub {...service} />
             <ServiceMain
               title={service.mainTitle}
               desc={service.mainDesc}
               image={service.mainImage}
-              isAnimate={isAnimate}
-              reverse={service.reverse}
             />
           </>
         )}
       </div>
 
       <div className="flex md:hidden flex-col md:flex-row gap-2 md:gap-8">
-        <ServiceSub
-          {...service}
-          isAnimate={isAnimate}
-          reverse={service.reverse}
-        />
-
+        <ServiceSub {...service} />
         <ServiceMain
           title={service.mainTitle}
           desc={service.mainDesc}
           image={service.mainImage}
-          isAnimate={isAnimate}
-          reverse={service.reverse}
         />
       </div>
     </>
@@ -136,41 +91,6 @@ function ServiceRow({ service, isAnimate }: ServiceRowProps) {
 }
 
 export default function Service() {
-  const [isAnimate, setIsAnimate] = useState(false);
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-
-    const monitorScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      const isScrollingDown = currentScrollY > lastScrollY;
-      const isScrollingUp = currentScrollY < lastScrollY;
-
-      const section = document.getElementById("SERVICES");
-      if (!section) return;
-
-      const rect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      const isLeavingViewport = rect.top < 0; // section going up (leaving)
-
-      if (isScrollingDown && isLeavingViewport) {
-        setIsAnimate(true); // float up
-      }
-
-      if (isScrollingUp) {
-        setIsAnimate(false); // float down (reset)
-      }
-
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener("scroll", monitorScroll);
-
-    return () => window.removeEventListener("scroll", monitorScroll);
-  }, []);
-
   return (
     <section
       id="SERVICES"
@@ -183,7 +103,7 @@ export default function Service() {
       </div>
 
       {services.map((service) => (
-        <ServiceRow key={service.id} service={service} isAnimate={isAnimate} />
+        <ServiceRow key={service.id} service={service} />
       ))}
     </section>
   );

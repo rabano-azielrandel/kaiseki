@@ -11,7 +11,6 @@ export type serviceTypes = {
 
 export type ServiceRowProps = {
   service: serviceTypes;
-  isAnimate: boolean;
 };
 
 export type ServiceSubProps = {
@@ -19,12 +18,10 @@ export type ServiceSubProps = {
   title: string;
   subtitle: string; 
   subImage: string;
-  isAnimate: boolean;
 };
 
 export type ServiceMainProps = {
   title: string;
   desc: string; 
   image: string;
-  isAnimate: boolean;
 };
