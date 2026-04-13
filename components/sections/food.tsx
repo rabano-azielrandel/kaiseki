@@ -37,18 +37,21 @@ export default function FoodEditorial() {
       </h2>
 
       {/* CATEGORY NAV */}
-      <div className="flex justify-center gap-8 mb-16 text-sm tracking-widest">
+      <div
+        className="flex sm:justify-center gap-6 sm:gap-8 mb-16 text-sm tracking-widest 
+                overflow-x-auto sm:overflow-visible flex-nowrap px-4 sm:px-0"
+      >
         {["all", ...menuCardsData.map((c) => c.title.toLowerCase())].map(
           (cat, i) => (
             <button
               key={i}
               onClick={() => setActiveCategory(cat)}
-              className={`border-b pb-1 transition font-jakarta-sans font-medium cursor-pointer
-                ${
-                  activeCategory === cat
-                    ? "border-primary"
-                    : "border-transparent hover:border-primary/40"
-                }`}
+              className={`border-b pb-1 whitespace-nowrap transition font-jakarta-sans font-medium cursor-pointer
+          ${
+            activeCategory === cat
+              ? "border-primary"
+              : "border-transparent hover:border-primary/40"
+          }`}
             >
               {cat}
             </button>
@@ -58,10 +61,10 @@ export default function FoodEditorial() {
 
       {/* MAIN GRID */}
       <div className="px-6 lg:px-20">
-        <div className="grid lg:grid-cols-2 gap-16 h-[520px]">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 h-[700px] sm:h-[750px] lg:h-[520px]">
           {/* LEFT — FIXED */}
           <div className="flex flex-col gap-6 h-full">
-            <div className="relative w-full h-[65%] overflow-hidden">
+            <div className="relative w-full h-[260px] sm:h-[320px] lg:h-[65%] overflow-hidden">
               <Image
                 src={activeItem.image}
                 alt={activeItem.name}
