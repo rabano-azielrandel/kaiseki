@@ -117,7 +117,9 @@ export default function FoodEditorial() {
                 }`}
                   >
                     <div>
-                      <p className="tracking-wide">{item.name}</p>
+                      <p className="text-lg font-medium tracking-wide">
+                        {item.name}
+                      </p>
                       <p className="text-xs mt-1">
                         {Number(item.rating).toFixed(1)} rating
                       </p>

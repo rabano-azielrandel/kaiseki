@@ -55,7 +55,7 @@ const menuContentData = [
             { name: "tempura", description: "Lightly battered fried seafood or vegetables", solo_price: "$10", set_price: "$18", image: "/icons/tempura3.png", rating: "5" },
             { name: "gyoza", description: "Pan-fried meat dumplings", solo_price: "$9", set_price: "$16", image: "/icons/gyoza2.png", rating: "5" },
             { name: "yakitori", description: "Grilled chicken skewers", solo_price: "$11", set_price: "$18", image: "/icons/yakitori1.png", rating: "5" },
-            { name: "hiyayakko", description: "Chilled tofu with toppings", solo_price: "$7", set_price: "$13", image: "/icons/hiyayakko.png", rating: "5" }
+            { name: "hiyayakko", description: "Chilled tofu with toppings", solo_price: "$7", set_price: "$13", image: "/icons/hiyayakko1.png", rating: "5" }
         ]
     },
     {
