@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { CardType } from "@/types/menuTypes";
 import MenuCardsData from "@/data/menuData";
-import { useState, useEffect } from "react";
+import { Section } from "lucide-react";
 
 export default function Menu() {
   const [selectedCard, setSelectedCard] = React.useState<CardType | null>(null);
@@ -22,41 +22,6 @@ export default function Menu() {
   React.useEffect(() => {
     document.body.style.overflow = selectedCard ? "hidden" : "auto";
   }, [selectedCard]);
-
-  const [isAnimate, setIsAnimate] = useState(false);
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-
-    const monitorScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      const isScrollingDown = currentScrollY > lastScrollY;
-      const isScrollingUp = currentScrollY < lastScrollY;
-
-      const section = document.getElementById("MENU");
-      if (!section) return;
-
-      const rect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      const isLeavingViewport = rect.top < 0; // section going up (leaving)
-
-      if (isScrollingDown && isLeavingViewport) {
-        setIsAnimate(true); // float up
-      }
-
-      if (isScrollingUp) {
-        setIsAnimate(false); // float down (reset)
-      }
-
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener("scroll", monitorScroll);
-
-    return () => window.removeEventListener("scroll", monitorScroll);
-  }, []);
 
   return (
     <section id="MENU" className="flex flex-col gap-20 px-4 py-28">
@@ -69,44 +34,34 @@ export default function Menu() {
       <div className="p-4">
         {/* GRID */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {cards.map((card, index) => {
-            const colCount = 2; // match base grid-cols-2
-            const row = Math.floor(index / colCount);
-            const direction = row % 2 === 0 ? "slide-left" : "slide-right";
-            return (
-              <Card
-                key={card.id}
-                onClick={() => setSelectedCard(card)}
-                style={{
-                  transitionDelay: `${index * 100}ms`,
-                }}
-                className={`slide ${
-                  isAnimate ? "slide-reset" : direction
-                } flex justify-center lg:justify-start items-center gap-8 px-4 py-4 cursor-pointer hover:shadow-xl transition hover:-translate-y-1`}
-              >
-                {/* IMAGE */}
-                <div className="w-20 h-20 flex items-center justify-center flex-shrink-0">
-                  <Image
-                    src={card.thumbnail}
-                    alt={card.title}
-                    width={100}
-                    height={100}
-                    className="max-w-full max-h-full object-contain"
-                  />
-                </div>
+          {cards.map((card) => (
+            <Card
+              key={card.id}
+              onClick={() => setSelectedCard(card)}
+              className="flex justify-center lg:justify-start items-center gap-8 px-4 py-4 cursor-pointer hover:shadow-xl transition hover:-translate-y-1"
+            >
+              {/* IMAGE */}
+              <div className="w-20 h-20 flex items-center justify-center flex-shrink-0">
+                <Image
+                  src={card.thumbnail}
+                  alt={card.title}
+                  width={100}
+                  height={100}
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
 
-                {/* TEXT */}
-                <div className="hidden sm:flex flex-col justify-center">
-                  <CardTitle className="text-base font-playfair font-semibold leading-tight">
-                    {card.title}
-                  </CardTitle>
-                  <CardDescription className="text-sm font-jakarta-sans font-light leading-relaxed tracking-tight">
-                    {card.description}
-                  </CardDescription>
-                </div>
-              </Card>
-            );
-          })}
+              {/* TEXT */}
+              <div className="hidden sm:flex flex-col justify-center">
+                <CardTitle className="text-base font-playfair font-semibold leading-tight">
+                  {card.title}
+                </CardTitle>
+                <CardDescription className="text-sm font-jakarta-sans font-light leading-relaxed tracking-tight">
+                  {card.description}
+                </CardDescription>
+              </div>
+            </Card>
+          ))}
         </div>
 
         {/* MODAL */}
