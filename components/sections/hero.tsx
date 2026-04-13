@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Button } from "../ui/button";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Modal from "../ui/modal";
 
 const foods = [
@@ -28,13 +28,50 @@ const foods = [
 export default function Hero() {
   const [isOrderNow, setIsOrderNow] = useState(false);
   const [isHowToOrder, setIsHowToOrder] = useState(false);
+  const [isAnimate, setIsAnimate] = useState(false);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const monitorScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      const isScrollingDown = currentScrollY > lastScrollY;
+      const isScrollingUp = currentScrollY < lastScrollY;
+
+      const section = document.getElementById("HERO");
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      const isLeavingViewport = rect.top < 0; // section going up (leaving)
+
+      if (isScrollingDown && isLeavingViewport) {
+        setIsAnimate(true); // float up
+      }
+
+      if (isScrollingUp) {
+        setIsAnimate(false); // float down (reset)
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", monitorScroll);
+
+    return () => window.removeEventListener("scroll", monitorScroll);
+  }, []);
+
   return (
     <section id="HERO" className="flex flex-col lg:flex-row">
       {/* subject image */}
       <div className="relative w-full lg:w-[45%] h-80 lg:h-[calc(100vh-10rem)] px-4 overflow-hidden">
         <div className="w-[80%] h-full flex bg-[#B74F46]" />
 
-        <div className="absolute inset-0">
+        <div
+          className={`absolute inset-0 slide ${isAnimate ? "slide-left" : "slide-reset"}`}
+        >
           <Image
             src="/icons/subject3.png"
             alt="subject"
@@ -50,10 +87,15 @@ export default function Hero() {
       <div className="w-full lg:w-[55%] h-full lg:h-[calc(100vh-10rem)] flex flex-col px-4 lg:px-10 py-16 gap-9 lg:gap-20 relative z-20 -mt-12 sm:mt-0">
         {/* Main Text */}
         <div className="flex flex-col gap-2 lg:gap-6">
-          <h1 className="font-playfair text-4xl lg:text-7xl 2xl:text-9xl font-semibold">
+          <h1
+            className={`font-playfair text-4xl lg:text-7xl 2xl:text-9xl font-semibold slide ${isAnimate ? "slide-left" : "slide-reset"}`}
+          >
             A Symphony of Taste
           </h1>
-          <h3 className="font-playfair text-md lg:text-xl 2xl:text-3xl font-medium leading-tight tracking-wide">
+          <h3
+            className={`font-playfair text-md lg:text-xl 2xl:text-3xl font-medium leading-tight tracking-wide 
+              transition-transform duration-800 ease-in-out slide ${isAnimate ? "slide-right" : "slide-reset"}`}
+          >
             Seasonal Elegance in Every Course
           </h3>
         </div>
@@ -63,7 +105,7 @@ export default function Hero() {
           <Button
             onClick={() => setIsOrderNow((prev) => !prev)}
             variant="default"
-            className="text-secondary rounded-full cursor-pointer px-4 py-2 text-sm lg:px-8 lg:py-7 lg:text-base"
+            className={`text-secondary rounded-full cursor-pointer px-4 py-2 text-sm lg:px-8 lg:py-7 lg:text-base ${isAnimate ? "fade-out" : "fade-in"}`}
           >
             Order Now
           </Button>
@@ -71,7 +113,7 @@ export default function Hero() {
           <Button
             onClick={() => setIsHowToOrder((prev) => !prev)}
             variant="outline"
-            className="text-primary rounded-full cursor-pointer px-4 py-2 text-sm lg:px-6 lg:py-7 lg:text-base"
+            className={`text-primary rounded-full cursor-pointer px-4 py-2 text-sm lg:px-6 lg:py-7 lg:text-base ${isAnimate ? "fade-out" : "fade-in"}`}
           >
             <span>▶</span> <p>How to order</p>
           </Button>
@@ -82,7 +124,10 @@ export default function Hero() {
           {foods.map((element, index) => (
             <div
               key={index}
-              className="w-10 lg:w-14 h-10 lg:h-14 flex-center rounded-full border cursor-pointer hover:scale-130 flex-shrink-0"
+              style={{
+                transitionDelay: `${index * 100}ms`, // stagger effect
+              }}
+              className={`w-10 lg:w-14 h-10 lg:h-14 flex-center rounded-full border cursor-pointer flex-shrink-0 float ${isAnimate ? "float-up" : "float-reset"}`}
             >
               <Image
                 src={element.img}
