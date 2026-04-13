@@ -41,12 +41,12 @@ export default function FoodEditorial() {
         className="flex sm:justify-center gap-6 sm:gap-8 mb-16 text-sm tracking-widest 
                 overflow-x-auto sm:overflow-visible flex-nowrap px-4 sm:px-0"
       >
-        {["all", ...menuCardsData.map((c) => c.title.toLowerCase())].map(
+        {["ALL", ...menuCardsData.map((c) => c.title.toUpperCase())].map(
           (cat, i) => (
             <button
               key={i}
               onClick={() => setActiveCategory(cat)}
-              className={`border-b pb-1 whitespace-nowrap transition font-jakarta-sans font-medium cursor-pointer
+              className={`border-b pb-1 whitespace-nowrap transition font-jakarta-sans font-normal cursor-pointer
           ${
             activeCategory === cat
               ? "border-primary"
