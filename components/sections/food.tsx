@@ -29,60 +29,17 @@ export default function FoodEditorial() {
   const activeItem = items[activeIndex];
   if (!activeItem) return null;
 
-  const [isAnimate, setIsAnimate] = useState(false);
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-
-    const monitorScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      const isScrollingDown = currentScrollY > lastScrollY;
-      const isScrollingUp = currentScrollY < lastScrollY;
-
-      const section = document.getElementById("FOOD");
-      if (!section) return;
-
-      const rect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      const isLeavingViewport = rect.top < 0; // section going up (leaving)
-
-      if (isScrollingDown && isLeavingViewport) {
-        setIsAnimate(true); // float up
-      }
-
-      if (isScrollingUp) {
-        setIsAnimate(false); // float down (reset)
-      }
-
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener("scroll", monitorScroll);
-
-    return () => window.removeEventListener("scroll", monitorScroll);
-  }, []);
-
   return (
-    <section
-      id="FOOD"
-      style={{
-        transitionDelay: `${2 * 100}ms`,
-      }}
-      className={`w-full py-24 bg-accent text-primary fade ${isAnimate ? "fade-in" : "fade-out"}`}
-    >
+    <section className="w-full py-24 bg-accent text-primary">
       {/* TITLE */}
-      <h2
-        className={`text-center text-4xl lg:text-5xl font-playfair font-bold tracking-widest mb-16 fade ${isAnimate ? "fade-in" : "fade-out"}`}
-      >
+      <h2 className="text-center text-4xl lg:text-5xl font-playfair font-bold tracking-widest mb-16">
         Food Experience
       </h2>
 
       {/* CATEGORY NAV */}
       <div
-        className={`flex sm:justify-center gap-6 sm:gap-8 mb-16 text-sm tracking-widest 
-                overflow-x-auto sm:overflow-visible flex-nowrap px-4 sm:px-0 fade ${isAnimate ? "fade-in" : "fade-out"}`}
+        className="flex sm:justify-center gap-6 sm:gap-8 mb-16 text-sm tracking-widest 
+                overflow-x-auto sm:overflow-visible flex-nowrap px-4 sm:px-0"
       >
         {["all", ...menuCardsData.map((c) => c.title.toLowerCase())].map(
           (cat, i) => (
@@ -103,9 +60,7 @@ export default function FoodEditorial() {
       </div>
 
       {/* MAIN GRID */}
-      <div
-        className={`px-6 lg:px-20 fade ${isAnimate ? "fade-in" : "fade-out"}`}
-      >
+      <div className="px-6 lg:px-20">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 h-[700px] sm:h-[750px] lg:h-[520px]">
           {/* LEFT — FIXED */}
           <div className="flex flex-col gap-6 h-full">
