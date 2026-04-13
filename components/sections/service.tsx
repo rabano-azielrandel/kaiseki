@@ -94,7 +94,7 @@ export default function Service() {
   return (
     <section
       id="SERVICES"
-      className="min-h-screen flex flex-col py-4 px-0 md:px-4 gap-4 md:gap-12 md:p-0"
+      className="min-h-screen flex flex-col py-4 gap-4 md:gap-12 md:p-0"
     >
       <div className="border-b-2 py-4 border-primary">
         <p className="font-playfair font-bold text-center lg:text-left text-2xl tracking-wider">
