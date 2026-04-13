@@ -64,7 +64,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="HERO" className="flex flex-col lg:flex-row">
+    <section id="HERO" className="flex flex-col lg:flex-row overflow-hidden">
       {/* subject image */}
       <div className="relative w-full lg:w-[45%] h-80 lg:h-[calc(100vh-10rem)] px-4 overflow-hidden">
         <div className="w-[80%] h-full flex bg-[#B74F46]" />
