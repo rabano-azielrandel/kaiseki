@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
+
+
+/* 1. Hide the buttons (Arrows) */
+::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: #B74F46;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fbc4bf;
+  border-radius: 4px;
+}
+
 :root {
   /* Use HSL format: H S% L% */
   --background: 29 94% 93%; /* #FEEDDD */

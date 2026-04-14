@@ -30,15 +30,18 @@ export default function FoodEditorial() {
   if (!activeItem) return null;
 
   return (
-    <section id="FOOD" className="w-full py-24 bg-accent text-primary">
+    <section
+      id="FOOD"
+      className="w-full py-24 bg-linear-to-b from-accent via-accent/80 to-accent/60 text-primary"
+    >
       {/* TITLE */}
-      <h2 className="text-center text-4xl lg:text-5xl font-playfair font-bold tracking-widest mb-16">
+      <h2 className="text-center text-4xl lg:text-5xl font-japanese font-bold tracking-widest uppercase">
         Food Experience
       </h2>
 
       {/* CATEGORY NAV */}
       <div
-        className="flex sm:justify-center gap-6 sm:gap-8 mb-16 text-sm tracking-widest 
+        className="mt-10 flex sm:justify-center gap-6 sm:gap-8 mb-16 text-sm tracking-widest 
                 overflow-x-auto sm:overflow-visible flex-nowrap px-4 sm:px-0"
       >
         {["all", ...menuCardsData.map((c) => c.title.toLowerCase())].map(
@@ -46,14 +49,14 @@ export default function FoodEditorial() {
             <button
               key={i}
               onClick={() => setActiveCategory(cat)}
-              className={`border-b pb-1 whitespace-nowrap transition font-jakarta-sans font-normal cursor-pointer
+              className={`border-b-3 pb-1 whitespace-nowrap transition font-jakarta-sans font-normal cursor-pointer
           ${
             activeCategory === cat
               ? "border-primary"
               : "border-transparent hover:border-primary/40"
           }`}
             >
-              {cat.toUpperCase()}
+              {cat}
             </button>
           ),
         )}
@@ -61,37 +64,42 @@ export default function FoodEditorial() {
 
       {/* MAIN GRID */}
       <div className="px-6 lg:px-20">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 h-[700px] sm:h-[750px] lg:h-[520px]">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 h-[700px] sm:h-[750px] lg:h-[520px]">
           {/* LEFT — FIXED */}
           <div className="flex flex-col gap-6 h-full">
-            <div className="relative w-full h-[260px] sm:h-[320px] lg:h-[65%] overflow-hidden">
+            {/* image */}
+            <div className="relative w-full h-[260px] sm:h-[320px] lg:h-[80%] overflow-hidden">
+              <div className="flex gap-2 h-10">
+                <div className="w-2 h- bg-white" />
+                <h3 className="text-3xl font-playfair font-semibold tracking-wide">
+                  {activeItem.name}
+                </h3>
+              </div>
+
               <Image
                 src={activeItem.image}
                 alt={activeItem.name}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-contain"
+                className="object-contain drop-shadow-xl drop-shadow-black/40"
                 priority
               />
             </div>
 
-            <div className="flex flex-col justify-between flex-1">
-              <div>
-                <h3 className="text-2xl font-playfair font-semibold tracking-wide">
-                  {activeItem.name}
-                </h3>
-
-                <p className="font-jakarta-sans text-primary/60 text-sm mt-2 max-w-md">
+            {/* text */}
+            <div className="flex justify-between items-start">
+              <div className="flex flex-col gap-2">
+                <p className="font-jakarta-sans text-primary/60 text-base mt-2 max-w-md">
                   {activeItem.description}
                 </p>
-              </div>
 
-              <div className="flex items-center gap-6 text-sm mt-4">
                 <p className="flex items-center gap-2">
                   <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   {Number(activeItem.rating).toFixed(1)}
                 </p>
+              </div>
 
+              <div className="h-full text-5xl font-bold">
                 <p>
                   ${Number(activeItem.solo_price.replace("$", "")).toFixed(2)}
                 </p>
@@ -100,7 +108,7 @@ export default function FoodEditorial() {
           </div>
 
           {/* RIGHT — SCROLLABLE */}
-          <div className="h-full overflow-y-auto pr-4">
+          <div className="h-full overflow-y-auto pr-8">
             <div className="flex flex-col divide-y divide-primary/10">
               {items.map((item, index) => {
                 const isActive = index === activeIndex;

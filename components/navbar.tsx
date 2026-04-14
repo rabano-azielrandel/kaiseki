@@ -22,7 +22,7 @@ export default function Navbar() {
       </div>
 
       {/* Navs */}
-      <div className="w-full lg:w-[55%] relative flex lg:block justify-end px-4">
+      <nav className="w-full lg:w-[55%] relative flex lg:block justify-end px-4">
         {/* Desktop */}
         <ul className="h-full hidden lg:flex justify-between items-center gap-6 px-4">
           {!hook.isSearchOpen &&
@@ -34,12 +34,16 @@ export default function Navbar() {
                     prev === element ? null : element,
                   )
                 }
-                className={
-                  hook.activeSection === element ? "font-medium" : "font-light"
-                }
+                className={`
+                  hook.activeSection === element ? "font-medium" : "font-light" `}
               >
-                <a href={`#${element}`}>
-                  <p className="font-jakarta-sans text-primary">{element}</p>
+                <a href={`#${element}`} className="relative group">
+                  <p className="font-jakarta-sans text-primary font-semibold tracking-wider">
+                    {element}
+                  </p>
+                  
+                  {/* hover effect */}
+                  <div className="absolute -bottom-2 left-0 h-1 w-0 group-hover:w-full transition-all duration-200 ease-in-out bg-[#B74F46]"/>  
                 </a>
               </li>
             ))}
@@ -104,7 +108,7 @@ export default function Navbar() {
             </ul>
           </div>
         )}
-      </div>
+      </nav>
     </div>
   );
 }

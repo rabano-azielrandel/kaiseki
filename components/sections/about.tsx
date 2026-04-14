@@ -31,54 +31,99 @@ const data = [
 
 export default function About() {
   return (
-    <section id="ABOUT" className="w-full px-6 md:px-16 py-20 bg-[#e9dfd2]">
+    <section
+      id="ABOUT"
+      className="mt-30 w-full px-6 md:px-16 py-20 bg-linear-to-b from-black/30 via-black/20 to-black/10"
+    >
       {/* Title */}
-      <div className="mb-16">
-        <h2 className="font-playfair text-4xl md:text-5xl text-primary">
+      <div className="mb-16 w-full text-center">
+        <h2 className="font-japanese text-4xl md:text-5xl text-primary tracking-widest">
           About Us
         </h2>
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-        {data.map((item, index) => (
-          <div
-            key={index}
-            className={`
-              flex flex-col gap-6 group
+      <div className="w-full flex gap-20">
+        <div className="w-full flex flex-col gap-20">
+          {data.slice(0, 2).map((item, index) => (
+            <div
+              key={index}
+              className={`
+            flex flex-col gap-10 group
               
-              /* stagger effect ONLY on large screens */
-              ${index % 2 !== 0 ? "lg:mt-16" : ""}
+            
             `}
-          >
-            {/* Image */}
-            <div className="relative w-full aspect-square bg-black overflow-hidden">
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-contain p-8 grayscale transition duration-700 hover:grayscale-0 group-hover:scale-105 cursor-pointer"
-              />
+            >
+              {/* Image */}
+              <div className="relative w-[70%] aspect-square bg-background rounded-full overflow-hidden flex justify-center items-center">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={200}
+                  height={200}
+                  className="object-contain w-[80%] h-auto grayscale-80 transition-all duration-300 ease-in-out hover:grayscale-50 group-hover:scale-105 cursor-pointer"
+                />
+              </div>
+
+              {/* Text */}
+              <div className="flex flex-col gap-2">
+                <h3 className="font-playfair font-bold text-3xl text-accent uppercase">
+                  {item.title}
+                </h3>
+
+                <p className="text-sm md:text-base text-primary/70 leading-relaxed font-light">
+                  {item.content}
+                </p>
+
+                {/* Index */}
+                <span className="text-xs text-white/30 tracking-widest mt-4">
+                  — {String(index + 1).padStart(2, "0")}
+                </span>
+              </div>
             </div>
+          ))}
+        </div>
 
-            {/* Text */}
-            <div className="flex flex-col gap-3">
-              <h3 className="font-playfair text-2xl text-primary">
-                {item.title}
-              </h3>
+        <div className="w-full flex flex-col gap-20 mt-115">
+          {data.slice(2).map((item, index) => (
+            <div
+              key={index}
+              className={`
+            flex flex-col gap-10 group
+              
+            
+            `}
+            >
+              {/* Image */}
+              <div className="relative w-[70%] aspect-square bg-background rounded-full overflow-hidden flex justify-center items-center">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={200}
+                  height={200}
+                  className={`${index === 0 ? "w-[30%]" : "w-[80%]"} object-contain h-auto grayscale-80 transition-all duration-300 ease-in-out 
+                    hover:grayscale-50 group-hover:scale-105 cursor-pointer`}
+                />
+              </div>
 
-              <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-                {item.content}
-              </p>
+              {/* Text */}
+              <div className="flex flex-col items-end gap-2">
+                <h3 className="font-playfair font-bold text-3xl text-accent uppercase">
+                  {item.title}
+                </h3>
 
-              {/* Index */}
-              <span className="text-xs text-red-400 tracking-widest mt-2">
-                — {String(index + 1).padStart(2, "0")}
-              </span>
+                <p className="text-sm md:text-base text-primary/70 leading-relaxed font-light text-right">
+                  {item.content}
+                </p>
+
+                {/* Index */}
+                <span className="text-xs text-white/30 tracking-widest mt-4">
+                  — {String(index + 1).padStart(2, "0")}
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
