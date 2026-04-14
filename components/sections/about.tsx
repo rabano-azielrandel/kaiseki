@@ -55,7 +55,7 @@ export default function About() {
             `}
             >
               {/* Image */}
-              <div className="relative w-[70%] aspect-square bg-background rounded-full overflow-hidden flex justify-center items-center">
+              <div className="relative w-[70%] aspect-square bg-background rounded-full overflow-hidden flex justify-center items-center self-center">
                 <Image
                   src={item.image}
                   alt={item.title}
@@ -95,7 +95,7 @@ export default function About() {
             `}
             >
               {/* Image */}
-              <div className="relative w-[70%] aspect-square bg-background rounded-full overflow-hidden flex justify-center items-center">
+              <div className="relative w-[70%] aspect-square bg-background rounded-full overflow-hidden flex justify-center items-center self-center">
                 <Image
                   src={item.image}
                   alt={item.title}
