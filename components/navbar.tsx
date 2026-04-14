@@ -4,6 +4,7 @@ import Image from "next/image";
 import useNavbar from "@/hooks/useNavbar";
 import { Input } from "./ui/input";
 import { SearchIcon } from "./ui/search-icon";
+import { MenuIcon } from "./ui/menu-icon";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 
 const tabs = ["MENU", "FOOD", "SERVICES", "ABOUT"];
@@ -58,12 +59,9 @@ export default function Navbar() {
         {/* Mobile Hamburger */}
         <div className="lg:hidden ml-auto flex items-center">
           <button onClick={hook.toggleMenu}>
-            <Image
-              src="/icons/menu.svg"
-              alt="menu"
-              width={24}
-              height={24}
-              className="w-6 h-6 bg-gray-700"
+            <MenuIcon
+              onClick={hook.toggleSearch}
+              className="w-7 h-7 dark:text-foreground transition-transform duration-200 hover:scale-125"
             />
           </button>
         </div>
