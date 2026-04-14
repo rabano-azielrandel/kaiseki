@@ -68,42 +68,67 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Dropdown */}
+        {/* Backdrop of mobile*/}
         {hook.isMenuOpen && (
-          <div className="lg:hidden absolute top-full right-0 w-40 h-[calc(100vh-4rem)] bg-orange-200 shadow-md z-50">
-            <ul className="flex flex-col items-center gap-6 py-6">
-              {tabs.map((element, index) => (
-                <li
-                  key={index}
-                  onClick={() => {
-                    hook.setActiveSection(element);
-                    hook.toggleMenu; // close menu on click
-                  }}
-                  className={
-                    hook.activeSection === element
-                      ? "font-medium"
-                      : "font-light"
-                  }
-                >
-                  <a href={`#${element}`}>
-                    <p className="text-lg font-jakarta-sans">{element}</p>
-                  </a>
-                </li>
-              ))}
-
-              {/* Mobile search icon */}
-              <li onClick={hook.toggleSearch} className="cursor-pointer">
-                <Image
-                  src="/icons/search.svg"
-                  alt="search"
-                  width={24}
-                  height={24}
-                  className="w-6 h-6"
-                />
-              </li>
-            </ul>
-          </div>
+          <div
+            onClick={hook.toggleMenu}
+            className="lg:hidden fixed inset-0 bg-black/40 backdrop-blur-sm z-40 transition-opacity"
+          />
         )}
+
+        {/* Mobile Drawer */}
+        <div
+          className={`
+            lg:hidden fixed top-0 right-0 h-screen w-64 z-50
+            bg-orange-200/90 backdrop-blur-md shadow-2xl
+            transform transition-transform duration-300 ease-in-out
+            ${hook.isMenuOpen ? "translate-x-0" : "translate-x-full"}
+          `}
+        >
+          {/* Sticky header inside menu */}
+          <div className="sticky top-0 p-4 border-b border-black/10 bg-orange-200/80 backdrop-blur-md">
+            <p className="font-japanese text-xl tracking-widest">KAISEKI</p>
+          </div>
+
+          {/* Menu items */}
+          <ul className="flex flex-col items-start gap-6 p-6">
+            {tabs.map((element, index) => (
+              <li
+                key={index}
+                onClick={() => {
+                  hook.setActiveSection(element);
+                  hook.toggleMenu();
+                }}
+                className={`transition-all ${
+                  hook.activeSection === element
+                    ? "font-medium translate-x-1"
+                    : "font-light opacity-80"
+                }`}
+              >
+                <a href={`#${element}`}>
+                  <p className="text-lg font-jakarta-sans">{element}</p>
+                </a>
+              </li>
+            ))}
+
+            {/* Search */}
+            <li
+              onClick={hook.toggleSearch}
+              className="flex items-center gap-2 cursor-pointer pt-4 border-t border-black/10 w-full"
+            >
+              <Image
+                src="/icons/search.svg"
+                alt="search"
+                width={20}
+                height={20}
+                className="w-5 h-5"
+              />
+              <span className="text-sm">Search</span>
+
+              {hook.isSearchOpen && <Input />}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
