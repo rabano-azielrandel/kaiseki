@@ -84,7 +84,7 @@ export default function Hero() {
         </div>
       </div>
       {/* Text Content */}
-      <div className="w-full lg:w-[55%] h-full lg:h-[calc(100vh-10rem)] flex flex-col px-4 lg:px-10 py-16 gap-9 lg:gap-20 relative z-20 -mt-12 sm:mt-0">
+      <div className="w-full lg:w-[55%] h-full lg:h-[calc(100vh-10rem)] flex flex-col px-4 lg:px-10 py-16 gap-9 lg:gap-15 relative z-20 -mt-12 sm:mt-0">
         {/* Main Text */}
         <div className="flex flex-col gap-2 lg:gap-6">
           <h1
@@ -127,18 +127,29 @@ export default function Hero() {
               style={{
                 transitionDelay: `${index * 100}ms`, // stagger effect
               }}
-              className={`w-10 lg:w-14 h-10 lg:h-14 flex-center rounded-full border cursor-pointer flex-shrink-0 float ${isAnimate ? "float-up" : "float-reset"}`}
+              className={`w-10 lg:w-16 h-10 lg:h-16 bg-white/10 flex-center rounded-full border-2 border-white/30 cursor-pointer flex-shrink-0 float 
+                overflow-visible ${isAnimate ? "float-up" : "float-reset"}`}
             >
               <Image
                 src={element.img}
                 alt="food"
-                width={100}
-                height={100}
-                className={element.class}
+                width={140}
+                height={140}
+                className={`${element.class} ${index === 0 || index === 7 ? "scale-180" : "scale-140"}  relative bottom-4`}
               />
             </div>
           ))}
         </div>
+
+        <a href={`#MENU`} className="relative group self-center mt-auto">
+          <Image
+            src={"/images/mouse-gif.gif"}
+            alt="scroll down icon"
+            width={60}
+            height={60}
+            className="object-contain w-[35px] h-auto grayscale"
+          />
+        </a>
       </div>
 
       <Modal isOpen={isOrderNow} onClose={() => setIsOrderNow(false)}>
