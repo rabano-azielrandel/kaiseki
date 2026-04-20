@@ -25,9 +25,9 @@ export default function Menu() {
   return (
     <section id="MENU" className="flex flex-col gap-20 px-4 py-28">
       <div className="w-[75%]">
-        <p className="font-playfair font-bold text-center lg:text-left text-4xl leading-tight tracking-wider">
+        <h2 className="font-playfair font-bold text-center lg:text-left ttext-4xl lg:text-5xl leading-tight tracking-wider">
           Kaiseki Signature
-        </p>
+        </h2>
         <div className="mt-2 w-full h-2 bg-linear-to-r from-[#B74F46] via-[#B74F46]/70 to-transparent" />
       </div>
 

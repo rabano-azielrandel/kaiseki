@@ -32,7 +32,7 @@ export default function FoodEditorial() {
   return (
     <section id="FOOD" className="w-full py-24 bg-accent text-primary">
       {/* TITLE */}
-      <h2 className="text-center text-4xl lg:text-5xl font-playfair font-bold tracking-widest mb-16">
+      <h2 className="text-center text-4xl lg:text-5xl font-playfair font-bold tracking-wider mb-16">
         Food Experience
       </h2>
 
