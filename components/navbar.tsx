@@ -39,8 +39,13 @@ export default function Navbar() {
                   hook.activeSection === element ? "font-medium" : "font-light"
                 }
               >
-                <a href={`#${element}`}>
-                  <p className="font-jakarta-sans text-primary">{element}</p>
+                <a href={`#${element}`} className="relative group">
+                  <p className="font-jakarta-sans text-primary font-medium tracking-wider">
+                    {element}
+                  </p>
+
+                  {/* hover effect */}
+                  <div className="absolute -bottom-2 left-0 h-1 w-0 group-hover:w-full transition-all duration-200 ease-in-out bg-[#B74F46]" />
                 </a>
               </li>
             ))}
