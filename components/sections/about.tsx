@@ -58,7 +58,7 @@ export default function About() {
                 alt={item.title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-contain p-8 grayscale transition duration-700 hover:grayscale-0 group-hover:scale-105 cursor-pointer"
+                className="object-contain p-8 grayscale-80 transition duration-700 hover:grayscale-45 group-hover:scale-105 cursor-pointer"
               />
             </div>
 
