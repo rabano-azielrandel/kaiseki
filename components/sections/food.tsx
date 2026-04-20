@@ -29,6 +29,12 @@ export default function FoodEditorial() {
   const activeItem = items[activeIndex];
   if (!activeItem) return null;
 
+  // Rating Stars
+  const rating = Number(activeItem.rating);
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 >= 0.3 && rating % 1 < 0.8;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
   return (
     <section
       id="FOOD"
@@ -97,11 +103,43 @@ export default function FoodEditorial() {
                 </p>
               </div>
 
-              <div className="h-full text-5xl font-bold flex items-center flex-nowrap">
-                <p className="flex items-center whitespace-nowrap">
-                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  {Number(activeItem.rating).toFixed(1)}
-                </p>
+              {/* Ratings */}
+              <div className="h-full flex items-center">
+                <div className="flex items-center gap-1">
+                  {Array.from({ length: 5 }).map((_, i) => {
+                    const diff = rating - i;
+
+                    // full star
+                    if (diff >= 1) {
+                      return (
+                        <Star
+                          key={i}
+                          className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                        />
+                      );
+                    }
+
+                    // half star
+                    if (diff >= 0.3) {
+                      return (
+                        <div key={i} className="relative">
+                          <Star className="w-4 h-4 text-gray-300" />
+                          <div className="absolute inset-0 overflow-hidden w-1/2">
+                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          </div>
+                        </div>
+                      );
+                    }
+
+                    // empty star
+                    return <Star key={i} className="w-4 h-4 text-gray-300" />;
+                  })}
+
+                  {/* rating number */}
+                  <span className="ml-2 text-sm font-semibold">
+                    {rating.toFixed(1)}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
