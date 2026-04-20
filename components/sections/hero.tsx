@@ -127,7 +127,7 @@ export default function Hero() {
               style={{
                 transitionDelay: `${index * 100}ms`, // stagger effect
               }}
-              className={`w-10 lg:w-16 h-10 lg:h-16 bg-white/10 flex-center rounded-full border-2 border-white/30 cursor-pointer flex-shrink-0 float 
+              className={`w-10 lg:w-16 h-10 lg:h-16 bg-white/10 flex-center rounded-full border-2 border-primary/50 cursor-pointer flex-shrink-0 float 
                 overflow-visible ${isAnimate ? "float-up" : "float-reset"}`}
             >
               <Image

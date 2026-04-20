@@ -76,7 +76,7 @@ export default function FoodEditorial() {
             {/* image */}
             <div className="relative w-full h-[260px] sm:h-[320px] lg:h-[80%] overflow-hidden">
               <div className="flex gap-2 h-10">
-                <h3 className="text-3xl font-playfair font-semibold tracking-wide">
+                <h3 className="text-3xl text-secondary font-playfair font-semibold tracking-wide">
                   {activeItem.name.toUpperCase()}
                 </h3>
               </div>
