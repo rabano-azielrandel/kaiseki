@@ -163,7 +163,7 @@ const menuCardsData: CardType[] = [
     id: 8,
     title: "Dessert",
     description: "Sweet finish",
-    thumbnail: "/icons/mochie.png",
+    thumbnail: "/icons/dorayaki1.png",
     content: contentMap["dessert"],
   },
 ];

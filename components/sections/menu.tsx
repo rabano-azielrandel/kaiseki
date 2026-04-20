@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/card";
 import { CardType } from "@/types/menuTypes";
 import MenuCardsData from "@/data/menuData";
-import { Section } from "lucide-react";
 
 export default function Menu() {
   const [selectedCard, setSelectedCard] = React.useState<CardType | null>(null);
@@ -25,23 +24,53 @@ export default function Menu() {
 
   return (
     <section id="MENU" className="flex flex-col gap-20 px-4 py-28">
-      <div className="border-b-2 py-4 border-primary">
-        <p className="font-playfair font-bold text-center lg:text-left text-2xl leading-tight tracking-wider">
+      <div className="w-[75%]">
+        <p className="font-playfair font-bold text-center lg:text-left text-4xl leading-tight tracking-wider">
           Kaiseki Signature
         </p>
+        <div className="mt-2 w-full h-2 bg-linear-to-r from-[#B74F46] via-[#B74F46]/70 to-transparent" />
       </div>
 
       <div className="p-4">
         {/* GRID */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
           {cards.map((card) => (
             <Card
               key={card.id}
               onClick={() => setSelectedCard(card)}
-              className="flex justify-center lg:justify-start items-center gap-8 px-4 py-4 cursor-pointer hover:shadow-xl transition hover:-translate-y-1"
+              className="relative bg-white/5 border-[#B74F46]/50 flex justify-center lg:justify-start items-center px-4 py-4 cursor-pointer hover:shadow-xl
+               transition-all duration-300 ease-in-out group rounded-none"
             >
+              {/* blob and hover effect */}
+              <div className="absolute inset-0 overflow-hidden flex justify-start items-center">
+                <svg
+                  viewBox="0 0 200 200"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="relative -left-17 w-auto h-[230%] group-hover:scale-200 transition-all duration-300 ease-in-out rotate-300"
+                >
+                  <path
+                    fill="#B74F46"
+                    d="M44.7,-49.7C60.5,-40,77.7,-28.4,82.6,-12.8C87.5,2.8,80.1,22.4,68.9,37.9C57.7,53.3,42.7,64.6,27.8,65C13,65.4,-1.6,54.9,-20.2,50.4C-38.9,45.8,-61.7,47.3,-71.8,37.7C-81.9,28,-79.3,7.2,-70.8,-7.5C-62.3,-22.3,-47.8,-31,-35,-41.2C-22.2,-51.3,-11.1,-62.9,1.7,-64.9C14.4,-66.9,28.9,-59.3,44.7,-49.7Z"
+                    transform="translate(100 100)"
+                  />
+                </svg>
+              </div>
+
+              {/* TEXT */}
+              <div className="z-10 hidden sm:flex flex-col justify-center gap-1">
+                <CardTitle className="text-base lg:text-2xl font-playfair font-bold tracking-wide">
+                  {card.title}
+                </CardTitle>
+                <CardDescription className="text-sm font-jakarta-sans font-light leading-relaxed">
+                  {card.description}
+                </CardDescription>
+              </div>
+
               {/* IMAGE */}
-              <div className="w-20 h-20 flex items-center justify-center flex-shrink-0">
+              <div
+                className="ml-auto relative right-4 z-10 w-20 h-20 transition-all duration-300 ease-in-out 
+              group-hover:scale-160 scale-150 bottom-8 flex items-center justify-center flex-shrink-0"
+              >
                 <Image
                   src={card.thumbnail}
                   alt={card.title}
@@ -49,16 +78,6 @@ export default function Menu() {
                   height={100}
                   className="max-w-full max-h-full object-contain"
                 />
-              </div>
-
-              {/* TEXT */}
-              <div className="hidden sm:flex flex-col justify-center">
-                <CardTitle className="text-base font-playfair font-semibold leading-tight">
-                  {card.title}
-                </CardTitle>
-                <CardDescription className="text-sm font-jakarta-sans font-light leading-relaxed tracking-tight">
-                  {card.description}
-                </CardDescription>
               </div>
             </Card>
           ))}
