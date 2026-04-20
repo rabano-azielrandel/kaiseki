@@ -9,13 +9,18 @@ import {
 function ServiceMain({ title, desc, image }: ServiceMainProps) {
   return (
     <div className="relative w-full md:w-[65%] shadow-2xl overflow-hidden">
-      <Image
-        src={image}
-        alt="service"
-        fill
-        sizes="(max-width: 768px) 100vw, 65vw"
-        className="object-cover"
-      />
+      <div className="absolute w-full h-full overflow-hidden">
+        <Image
+          src={image}
+          alt="service"
+          fill
+          sizes="(max-width: 768px) 100vw, 65vw"
+          className="object-cover z-10 brightness-70" // Removed brightness-70 to let the fade do the work
+        />
+
+        {/* Linear Gradient Fade: Transparent on the left, Dark on the right */}
+        <div className="absolute inset-0 z-20 bg-gradient-to-l from-black/40 via-black/40 to-transparent" />
+      </div>
 
       <div className="absolute inset-0 bg-black/40" />
 
@@ -48,6 +53,8 @@ function ServiceSub({ id, title, subtitle, subImage }: ServiceSubProps) {
           sizes="(max-width: 768px) 100vw, 35vw"
           className="object-cover scale-110"
         />
+
+        <div className="absolute inset-0 z-10 bg-[radial-gradient(circle,_transparent_30%,_rgba(0,0,0,0.7)_100%)]" />
       </div>
     </div>
   );
@@ -94,12 +101,14 @@ export default function Service() {
   return (
     <section
       id="SERVICES"
-      className="min-h-screen flex flex-col py-4 gap-4 md:gap-12 md:p-0"
+      className="min-h-screen flex flex-col py-4 gap-4 md:gap-12 md:p-0 mt-30"
     >
-      <div className="border-b-2 py-4 border-primary">
-        <p className="font-playfair font-bold text-center lg:text-left text-2xl tracking-wider">
+      <div className="w-[75%]">
+        <h2 className="font-playfair font-bold text-center lg:text-left ttext-4xl lg:text-5xl leading-tight tracking-wider">
           Services
-        </p>
+        </h2>
+
+        <div className="mt-2 w-full h-2 bg-linear-to-r from-[#B74F46] via-[#B74F46]/70 to-transparent"></div>
       </div>
 
       {services.map((service) => (
