@@ -120,7 +120,7 @@ export default function Hero() {
         </div>
 
         {/* footer icons */}
-        <div className="flex gap-6 lg:gap-8 overflow-x-scroll lg:overflow-x-visible">
+        <div className="flex gap-6 lg:gap-8 overflow-x-scroll lg:overflow-x-visible overflow-y-hidden lg:overflow-y-visible">
           {foods.map((element, index) => (
             <div
               key={index}
@@ -135,7 +135,7 @@ export default function Hero() {
                 alt="food"
                 width={140}
                 height={140}
-                className={`${element.class} ${index === 0 || index === 7 ? "scale-180" : "scale-140"}  relative bottom-4`}
+                className={`${element.class} ${index === 0 || index === 7 ? "scale-180" : "scale-140"}  relative lg:bottom-4 `}
               />
             </div>
           ))}
